@@ -1,6 +1,4 @@
 TODO:
-  - header list uses isMobileView state variable, probably it (and other components)
-  should make use of global windowWidth state
 
 DONE:
   -

@@ -1,0 +1,30 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 16px;
+
+  color: rgb(0, 119, 128);
+  background-color: transparent;
+  border: 1px solid rgb(225, 227, 237);
+  border-radius: 4px;
+  outline: 2px solid transparent;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: outline-color 300ms;
+}
+.button:hover {
+  outline-color: rgb(243, 244, 250);
+}
+
+.button--type-0 {
+  background-color: rgb(163, 231, 203);
+  color: rgb(0, 89, 93);
+  border-color: rgb(105, 211, 167);
+}
+.button--type-0:hover {
+  outline-color: rgb(228, 251, 242);
+}

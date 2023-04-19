@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './Header.module.css';
 
-import HeaderList from '../HeaderList/HeaderList';
+import HeaderMenu from '../HeaderMenu/HeaderMenu';
 import Logo from '../Logo/Logo';
 
 function Header() {
@@ -9,7 +9,7 @@ function Header() {
     <header className={css['container']}>
 
       <Logo/>
-      <HeaderList/>
+      <HeaderMenu/>
 
     </header>
   );
