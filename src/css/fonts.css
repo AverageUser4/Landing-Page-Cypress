@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'Inter';
+  src: url(../assets/fonts/inter-400.woff2) format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url(../assets/fonts/inter-600.woff2) format('woff2');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-300.woff2) format('woff2');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-400.woff2) format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-500.woff2) format('woff2');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-600.woff2) format('woff2');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-700.woff2) format('woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(../assets/fonts/roboto-400.woff2) format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url(../assets/fonts/roboto-500.woff2) format('woff2');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url(../assets/fonts/roboto-700.woff2) format('woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'SF-Mono';
+  src: url(../assets/fonts/sf-mono-400.woff2) format('woff2');
+  font-weight: 400;
+}
