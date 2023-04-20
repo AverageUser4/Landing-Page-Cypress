@@ -3,13 +3,13 @@ import css from './HeaderMenu.module.css';
 import MenuToggleButton from '../MenuToggleButton/MenuToggleButton';
 import Button from '../Button/Button';
 import { useViewportContext } from '../../context/ViewportContext';
+import HeaderSubmenu from '../HeaderSubmenu/HeaderSubmenu';
 
 function HeaderMenu() {
   const { viewportWidth } = useViewportContext();
   
-  console.log(viewportWidth)
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentlyActiveSubmenu, setCurrentlyActiveSubmenu] = useState('');
   const isMobileView = viewportWidth < 640;
 
   return (
@@ -17,7 +17,7 @@ function HeaderMenu() {
 
       {
         (isMenuOpen || !isMobileView) &&
-          <div className={`
+          <nav className={`
             ${css['menu']}
             ${!isMobileView ? css['menu--desktop'] : ''}
           `}>
@@ -29,6 +29,7 @@ function HeaderMenu() {
             >
               <li>
                 <Button
+                  onClick={() => setCurrentlyActiveSubmenu('product')}
                   hasArrow={isMobileView}
                   type="menu-item"
                 >
@@ -38,6 +39,7 @@ function HeaderMenu() {
 
               <li>
                 <Button
+                  onClick={() => setCurrentlyActiveSubmenu('docs')}
                   hasArrow={isMobileView}
                   type="menu-item"
                 >
@@ -47,6 +49,7 @@ function HeaderMenu() {
 
               <li>
                 <Button
+                  onClick={() => setCurrentlyActiveSubmenu('community')}
                   hasArrow={isMobileView}
                   type="menu-item"
                 >
@@ -56,6 +59,7 @@ function HeaderMenu() {
 
               <li>
                 <Button
+                  onClick={() => setCurrentlyActiveSubmenu('company')}
                   hasArrow={isMobileView}
                   type="menu-item"
                 >
@@ -105,7 +109,13 @@ function HeaderMenu() {
                 }
             </div>
 
-          </div>
+            <HeaderSubmenu
+              isMobileView={isMobileView}
+              currentlyActiveSubmenu={currentlyActiveSubmenu}
+              setCurrentlyActiveSubmenu={setCurrentlyActiveSubmenu}
+            />
+
+          </nav>
       }
 
       {

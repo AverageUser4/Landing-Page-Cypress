@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  /* align-items: center; */
+  gap: 16px;
+
+  /* background-color: green; */
+  text-decoration: none;
+}
+
+.icon-container {
+  width: 26px;
+  height: 26px;
+  padding: 7px;
+
+  background-color: rgb(228, 251, 242);
+  border-radius: 4px;
+
+  flex-shrink: 0;
+}
+
+.heading {
+  margin: 0 0 6px 0;
+  
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(0, 119, 128);
+  line-height: 1;
+}
+.heading .arrow {
+  width: 0px;
+  height: 0px;
+}
+.heading:hover .arrow {
+  width: 16px;
+  height: 16px;
+}
+
+.paragraph {
+  margin: 0;
+  
+  font-family: Roboto;
+  font-size: 14px;
+  color: rgb(90, 95, 122);
+}

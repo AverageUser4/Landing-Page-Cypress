@@ -10,7 +10,8 @@ function Button({ children, href, ariaLabel, onClick, hasArrow, type }) {
     ${type ? css[`button--type-${type}`] : ''}
   `;
   const clickCallback = (event) => onClick && onClick(event);
-  
+  const arrow = <ArrowSVG className={css['arrow']}/>
+
   if(href) {
     return (
       <a 
@@ -20,7 +21,7 @@ function Button({ children, href, ariaLabel, onClick, hasArrow, type }) {
         onClick={clickCallback}
       >
         {children}
-        {hasArrow && <ArrowSVG/>}
+        {hasArrow && arrow}
       </a>
     )
   }
@@ -32,7 +33,7 @@ function Button({ children, href, ariaLabel, onClick, hasArrow, type }) {
       onClick={clickCallback}
     >
       {children}
-      {hasArrow && <ArrowSVG/>}
+      {hasArrow && arrow}
     </button>
   );
 }

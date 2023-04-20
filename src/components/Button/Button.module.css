@@ -30,13 +30,14 @@
   outline-color: rgb(228, 251, 242);
 }
 
-.button--type-menu-item {
+.button--type-menu-item,
+.button--type-menu-item-reversed {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   width: 100%;
-  padding: 16px;
+  padding: 16px 0;
   
   font-weight: 500;
   color: rgb(90, 95, 122);
@@ -46,17 +47,33 @@
 
   box-sizing: border-box;
 }
-.button--type-menu-item:hover {
+.button--type-menu-item:hover,
+.button--type-menu-item-reversed:hover {
   outline-color: transparent;
+}
+.button--type-menu-item-reversed {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 16px;
+
+  text-transform: capitalize;
+}
+.button--type-menu-item-reversed .arrow {
+  transform: scaleX(-1);
 }
 
 .button--type-round {
-  padding: 0.3em 0.6em;
+  padding: 0.4em 0.7em;
 
+  font-size: 14px;
   background-color: rgb(163, 231, 203);
   color: rgb(0, 89, 93);
   border-radius: 2em;
 }
 .button--type-round:hover {
   outline-color: transparent;
+}
+.button--type-round .arrow {
+  width: 0.8em;
+  height: 0.8em;
 }
