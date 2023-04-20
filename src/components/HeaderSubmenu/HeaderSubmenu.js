@@ -4,6 +4,9 @@ import css from './HeaderSubmenu.module.css';
 
 import Button from '../Button/Button';
 import HeaderSubmenuProduct from '../HeaderSubmenuProduct/HeaderSubmenuProduct';
+import HeaderSubmenuDocs from '../HeaderSubmenuDocs/HeaderSubmenuDocs';
+import HeaderSubmenuCommunity from '../HeaderSubmenuCommunity/HeaderSubmenuCommunity';
+import HeaderSubmenuCompany from '../HeaderSubmenuCompany/HeaderSubmenuCompany';
 
 function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiveSubmenu }) {
   if(!currentlyActiveSubmenu) {
@@ -18,6 +21,18 @@ function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiv
 
     case 'product':
       content = <HeaderSubmenuProduct isMobileView={isMobileView}/>
+      break;
+
+    case 'docs':
+      content = <HeaderSubmenuDocs isMobileView={isMobileView}/>
+      break;
+
+    case 'community':
+      content = <HeaderSubmenuCommunity isMobileView={isMobileView}/>
+      break;
+
+    case 'company':
+      content = <HeaderSubmenuCompany isMobileView={isMobileView}/>
       break;
 
     default:

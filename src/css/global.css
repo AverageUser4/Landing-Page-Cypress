@@ -7,3 +7,9 @@ body {
 button:hover {
   cursor: pointer;
 }
+
+.icon-light-jade-200,
+.icon-light-fill,
+.icon-light {
+  fill: rgb(163, 231, 203);
+}

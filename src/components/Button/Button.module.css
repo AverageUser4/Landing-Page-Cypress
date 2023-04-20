@@ -77,3 +77,18 @@
   width: 0.8em;
   height: 0.8em;
 }
+
+.button--type-link {
+  display: inline-flex;
+  justify-content: flex-start;
+  gap: 0.66em;
+
+  padding: 0;
+
+  color: rgb(0, 119, 128);
+  font-size: 14px;
+  border: none;
+}
+.button--type-link:hover {
+  outline-color: transparent;
+}

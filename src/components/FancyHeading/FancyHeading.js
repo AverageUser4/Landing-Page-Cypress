@@ -14,7 +14,12 @@ function FancyHeading({ Icon, heading, text, href }) {
       <div>
         <h3 className={css['heading']}>
           {heading}
-          {href && <FullArrowSVG className={css['arrow']}/>}
+          {
+            href &&
+              <span className={css['arrow-container']}>
+                <FullArrowSVG className={css['arrow']}/>
+              </span>
+          }
         </h3>
         <p className={css['paragraph']}>{text}</p>
       </div>
