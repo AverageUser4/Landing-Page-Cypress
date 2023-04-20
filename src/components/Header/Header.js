@@ -6,11 +6,11 @@ import Logo from '../Logo/Logo';
 
 function Header() {
   return (
-    <header className={css['container']}>
-
-      <Logo/>
-      <HeaderMenu/>
-
+    <header className={css['header']}>
+      <div className={css['header-content']}>
+        <Logo/>
+        <HeaderMenu/>
+      </div>
     </header>
   );
 }

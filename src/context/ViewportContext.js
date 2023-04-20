@@ -11,6 +11,8 @@ function ViewportProvider({ children }) {
       setViewportWidth(window.innerWidth);
     }
 
+    onResize();
+
     window.addEventListener('resize', onResize);
 
     return () => {

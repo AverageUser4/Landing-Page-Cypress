@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import css from './HeaderMenu.module.css';
 import MenuToggleButton from '../MenuToggleButton/MenuToggleButton';
-import MenuItem from '../MenuItem/MenuItem';
+import Button from '../Button/Button';
 import { useViewportContext } from '../../context/ViewportContext';
 
 function HeaderMenu() {
   const { viewportWidth } = useViewportContext();
   
+  console.log(viewportWidth)
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobileView = viewportWidth < 640;
 
@@ -26,39 +28,48 @@ function HeaderMenu() {
               `}
             >
               <li>
-                <MenuItem
-                  isMobileView={isMobileView}
-                  text={'Product'}
-                />
+                <Button
+                  hasArrow={isMobileView}
+                  type="menu-item"
+                >
+                  Product
+                </Button>
               </li>
 
               <li>
-                <MenuItem
-                  isMobileView={isMobileView}
-                  text={'Docs'}
-                />
+                <Button
+                  hasArrow={isMobileView}
+                  type="menu-item"
+                >
+                  Docs
+                </Button>
               </li>
 
               <li>
-                <MenuItem
-                  isMobileView={isMobileView}
-                  text={'Community'}
-                />
+                <Button
+                  hasArrow={isMobileView}
+                  type="menu-item"
+                >
+                  Community
+                </Button>
               </li>
 
               <li>
-                <MenuItem
-                  isMobileView={isMobileView}
-                  text={'Company'}
-                />
+                <Button
+                  hasArrow={isMobileView}
+                  type="menu-item"
+                >
+                  Company
+                </Button>
               </li>
 
               <li>
-                <MenuItem
-                  isMobileView={isMobileView}
-                  text={'Pricing'}
+                <Button
+                  type="menu-item"
                   href="https://www.cypress.io/pricing?v=1"
-                />
+                >
+                  Pricing
+                </Button>
               </li>
             </ul>
 
@@ -66,25 +77,32 @@ function HeaderMenu() {
               ${css['buttons-container']}
               ${!isMobileView ? css['buttons-container--desktop'] : ''}
             `}>
-              <a 
-                className={`
-                  ${isMobileView ? 'button' : ''}
-                `}
-                href="https://cloud.cypress.io/login"
-              >
-                Log in
-              </a>
-              {
-                isMobileView &&
-                  <a 
-                    className={`
-                      ${isMobileView ? 'button button--type-0' : ''}
-                    `}
-                    href="https://cloud.cypress.io/signup"
-                  >
-                    Sign up
-                  </a>
-              }
+                <Button
+                  href="https://cloud.cypress.io/login"
+                  type={isMobileView ? '' : 'menu-item'}
+                >
+                  Log in
+                </Button>
+
+                {
+                  isMobileView &&
+                    <Button
+                      href="https://cloud.cypress.io/signup"
+                      type="a"
+                    >
+                      Sign up
+                    </Button>
+                }
+
+                {
+                  viewportWidth >= 1000 &&
+                    <Button
+                      hasArrow={true}
+                      type={'round'}
+                    >
+                      Install
+                    </Button>
+                }
             </div>
 
           </div>

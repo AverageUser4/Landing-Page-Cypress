@@ -1,0 +1,62 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+
+  padding: 0.66em 1em;
+
+  color: rgb(0, 119, 128);
+  background-color: transparent;
+  border: 1px solid rgb(225, 227, 237);
+  border-radius: 4px;
+  outline: 2px solid transparent;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: outline-color 300ms;
+}
+.button:hover {
+  outline-color: rgb(243, 244, 250);
+}
+
+.button--type-a {
+  background-color: rgb(163, 231, 203);
+  color: rgb(0, 89, 93);
+  border-color: rgb(105, 211, 167);
+}
+.button--type-a:hover {
+  outline-color: rgb(228, 251, 242);
+}
+
+.button--type-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 16px;
+  
+  font-weight: 500;
+  color: rgb(90, 95, 122);
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+
+  box-sizing: border-box;
+}
+.button--type-menu-item:hover {
+  outline-color: transparent;
+}
+
+.button--type-round {
+  padding: 0.3em 0.6em;
+
+  background-color: rgb(163, 231, 203);
+  color: rgb(0, 89, 93);
+  border-radius: 2em;
+}
+.button--type-round:hover {
+  outline-color: transparent;
+}
