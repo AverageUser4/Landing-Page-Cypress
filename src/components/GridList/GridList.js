@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import css from './GridList.module.css';
 
 function GridList({ children, columnsCount = 2 }) {
-  const listItems = children.map((element, index) => (
-    <li
-      key={index}
-    >
-      {element}
-    </li>
-  ));
+  let listItems = children;
+
+  if(Array.isArray(children)) {
+    listItems = children.map((element, index) => (
+      <li
+        key={index}
+      >
+        {element}
+      </li>
+    ));
+  }
 
   return (
     <ul

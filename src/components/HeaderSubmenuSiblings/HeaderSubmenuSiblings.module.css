@@ -4,8 +4,10 @@
   border-radius: inherit;
 }
 
-.left {
+.left,
+.right {
   padding: 32px 16px 16px;
+  flex-grow: 1;
 }
 
 .right {

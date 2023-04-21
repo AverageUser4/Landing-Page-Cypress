@@ -89,6 +89,7 @@
 
   font-size: 14px;
   background-color: rgb(163, 231, 203);
+  border: none;
   color: rgb(0, 89, 93);
   border-radius: 2em;
 }
@@ -122,4 +123,8 @@
 }
 .button--type-link-a:hover {
   color: rgb(0, 119, 128);
+}
+.button--type-link-a--bold {
+  color: rgb(46, 50, 71);
+  font-weight: 500;
 }

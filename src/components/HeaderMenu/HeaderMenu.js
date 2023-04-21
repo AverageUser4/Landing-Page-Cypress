@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import css from './HeaderMenu.module.css';
 import MenuToggleButton from '../MenuToggleButton/MenuToggleButton';
 import Button from '../Button/Button';
-import { useViewportContext } from '../../context/ViewportContext';
+import { useWebpageStateContext } from '../../context/WebpageState';
 import HeaderSubmenu from '../HeaderSubmenu/HeaderSubmenu';
 
 function HeaderMenu() {
-  const { viewportWidth } = useViewportContext();
+  const { viewportWidth } = useWebpageStateContext();
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentlyActiveSubmenu, setCurrentlyActiveSubmenu] = useState('');

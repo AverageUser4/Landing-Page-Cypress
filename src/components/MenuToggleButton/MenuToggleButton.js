@@ -16,7 +16,7 @@ function MenuToggleButton({ isOpen, setIsOpen }) {
         isOpen ?
           <CloseSVG/>
         :
-          <MenuBarsSVG/>
+          <MenuBarsSVG style={{ transform: 'scaleX(-1)' }}/>
       }
     </button>
   );

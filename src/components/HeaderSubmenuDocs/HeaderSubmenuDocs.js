@@ -5,17 +5,20 @@ import FancyHeading from '../FancyHeading/FancyHeading';
 import GridList from '../GridList/GridList';
 import Button from '../Button/Button';
 import HeaderSubmenuSection from '../HeaderSubmenuSection/HeaderSubmenuSection';
+import Heading from '../Heading/Heading';
+import HeaderSubmenuSiblings from '../HeaderSubmenuSiblings/HeaderSubmenuSiblings';
+
+import getData from '../../misc/HeaderSubmenuElementsData';
 
 import { ReactComponent as BookSVG } from './assets/book.svg';
 import { ReactComponent as HatSVG } from './assets/hat.svg';
 import { ReactComponent as TagSVG } from './assets/tag.svg';
 import { ReactComponent as BookSmallSVG } from './assets/book-small.svg';
 import { ReactComponent as QuestionMarkSVG } from './assets/question-mark.svg';
-import Heading from '../Heading/Heading';
-import HeaderSubmenuSiblings from '../HeaderSubmenuSiblings/HeaderSubmenuSiblings';
-
 
 function HeaderSubmenuDocs({ isMobileView }) {
+  const { types, classNames } = getData(isMobileView);
+
   const heading = (
     <FancyHeading
       Icon={BookSVG}
@@ -29,15 +32,15 @@ function HeaderSubmenuDocs({ isMobileView }) {
     <GridList columnsCount={1}>
       <Heading>Getting started</Heading>
     
-      <Button type="link" href="https://on.cypress.io/installing-cypress">
+      <Button type={types.link} href="https://on.cypress.io/installing-cypress">
         Installing Cypress
       </Button>
 
-      <Button type="link" href="https://on.cypress.io/writing-your-first-test">
+      <Button type={types.link} href="https://on.cypress.io/writing-your-first-test">
         Writing your first test
       </Button>
 
-      <Button type="link" href="https://on.cypress.io/testing-your-app">
+      <Button type={types.link} href="https://on.cypress.io/testing-your-app">
         Testing your app
       </Button>
     </GridList>
@@ -47,15 +50,15 @@ function HeaderSubmenuDocs({ isMobileView }) {
     <GridList columnsCount={1}>
       <Heading>References</Heading>
     
-      <Button type="link" href="https://docs.cypress.io/api/commands/and">
+      <Button type={types.link} href="https://docs.cypress.io/api/commands/and">
         API
       </Button>
 
-      <Button type="link" href="https://on.cypress.io/configuration">
+      <Button type={types.link} href="https://on.cypress.io/configuration">
         Configuration
       </Button>
 
-      <Button type="link" href="https://on.cypress.io/best-practices">
+      <Button type={types.link} href="https://on.cypress.io/best-practices">
         Best practices
       </Button>
     </GridList>
@@ -63,23 +66,23 @@ function HeaderSubmenuDocs({ isMobileView }) {
 
   const thirdList = (
     <GridList columnsCount={isMobileView ? 2 : 1}>
-      <Button type="link" href="https://learn.cypress.io/">
-        <HatSVG/>
+      <Button className="icon-container" type={types.linkBold} href="https://learn.cypress.io/">
+        <HatSVG className={classNames.svg}/>
         Learn Cypress
       </Button>
 
-      <Button type="link" href="https://on.cypress.io/changelog">
-        <TagSVG/>
+      <Button className="icon-container" type={types.linkBold} href="https://on.cypress.io/changelog">
+        <TagSVG className={classNames.svg}/>
         Changelog
       </Button>
 
-      <Button type="link" href="https://on.cypress.io/migration-guide">
-        <BookSmallSVG/>
+      <Button className="icon-container" type={types.linkBold} href="https://on.cypress.io/migration-guide">
+        <BookSmallSVG className={classNames.svg}/>
         Migration guides
       </Button>
 
-      <Button type="link" href="https://on.cypress.io/faq">
-        <QuestionMarkSVG/>
+      <Button className="icon-container" type={types.linkBold} href="https://on.cypress.io/faq">
+        <QuestionMarkSVG className={classNames.svg}/>
         FAQ
       </Button>
     </GridList>

@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 
-import { ViewportProvider } from './context/ViewportContext';
+import { WebpageStateProvider } from './context/WebpageState';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 root.render(
   <StrictMode>
-    <ViewportProvider>
+    <WebpageStateProvider>
       <App/>
-    </ViewportProvider>
+    </WebpageStateProvider>
   </StrictMode>
 );
