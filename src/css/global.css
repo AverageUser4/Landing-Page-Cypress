@@ -8,8 +8,23 @@ button:hover {
   cursor: pointer;
 }
 
-.icon-light-jade-200,
-.icon-light-fill,
-.icon-light {
+.icon-container:hover .icon-container__svg-part {
   fill: rgb(163, 231, 203);
+  opacity: 1;
+}
+.icon-container:hover .icon-container__svg {
+  opacity: 1;
+}
+
+.icon-container__svg {
+  opacity: 0.65;
+  transition: opacity var(--transition-duration);
+}
+.icon-container__svg .icon-container__svg-part {
+  fill: rgb(225, 227, 237);
+}
+
+.icon-container__svg-part {
+  fill: rgb(163, 231, 203);
+  transition: fill var(--transition-duration);
 }

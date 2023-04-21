@@ -20,7 +20,7 @@ import { ReactComponent as ChainSVG } from './assets/chain.svg';
 function HeaderSubmenuProduct({ isMobileView }) {
   return (
     <div>
-      <HeaderSubmenuSection>
+      <HeaderSubmenuSection hasBorder={isMobileView}>
         <FancyHeading
           Icon={LaptopSVG}
           heading="Cypress App"
@@ -29,30 +29,29 @@ function HeaderSubmenuProduct({ isMobileView }) {
         />
 
         <GridList>
-          <Button type="link" href="https://www.cypress.io/app">
-            <WebpageSVG/>
+          <Button className="icon-container" type={`link ${!isMobileView ? 'link-a' : ''}`} href="https://www.cypress.io/app">
+            <WebpageSVG className={isMobileView ? '' : 'icon-container__svg'}/>
             Browser Testing
           </Button>
 
-          <Button type="link" href="https://www.cypress.io/app#visual_debugging">
-            <MouseCursorSVG/>
+          <Button className="icon-container" type={`link ${!isMobileView ? 'link-a' : ''}`} href="https://www.cypress.io/app#visual_debugging">
+            <MouseCursorSVG className={isMobileView ? '' : 'icon-container__svg'}/>
             Visual Debugging
           </Button>
 
-          <Button type="link" href="https://www.cypress.io/app#delightful_experience">
-            <HeartSVG/>
+          <Button className="icon-container" type={`link ${!isMobileView ? 'link-a' : ''}`} href="https://www.cypress.io/app#delightful_experience">
+            <HeartSVG className={isMobileView ? '' : 'icon-container__svg'}/>
             Delightful Experience
           </Button>
 
-          <Button type="link" href="https://www.cypress.io/app#flake_resistance">
-            <ShieldSVG/>
+          <Button className="icon-container" type={`link ${!isMobileView ? 'link-a' : ''}`} href="https://www.cypress.io/app#flake_resistance">
+            <ShieldSVG className={isMobileView ? '' : 'icon-container__svg'}/>
             Flake Resistance
           </Button>
         </GridList>
       </HeaderSubmenuSection>
 
       <HeaderSubmenuSection>
-
         <FancyHeading
           Icon={MeterSVG}
           heading="Cypress Cloud"
@@ -61,23 +60,23 @@ function HeaderSubmenuProduct({ isMobileView }) {
         />
 
         <GridList>
-          <Button type="link" href="https://www.cypress.io/cloud#smart_orchestration">
-            <LightningSVG/>
+          <Button className="icon-container" type={`link ${!isMobileView ? 'link-a' : ''}`} href="https://www.cypress.io/cloud#smart_orchestration">
+            <LightningSVG className={isMobileView ? '' : 'icon-container__svg'}/>
             Smart Orchestration
           </Button>
 
-          <Button type="link" href="https://www.cypress.io/cloud#visual_reviews">
-            <PictureSVG/>
+          <Button className="icon-container" type={`link ${!isMobileView ? 'link-a' : ''}`} href="https://www.cypress.io/cloud#visual_reviews">
+            <PictureSVG className={isMobileView ? '' : 'icon-container__svg'}/>
             Visual Reviews
           </Button>
 
-          <Button type="link" href="https://www.cypress.io/cloud#test_analytics">
-            <StatsSVG/>
+          <Button className="icon-container" type={`link ${!isMobileView ? 'link-a' : ''}`} href="https://www.cypress.io/cloud#test_analytics">
+            <StatsSVG className={isMobileView ? '' : 'icon-container__svg'}/>
             Test Analytics
           </Button>
 
-          <Button type="link" href="https://www.cypress.io/cloud#integrated_workflows">
-            <ChainSVG/>
+          <Button className="icon-container" type={`link ${!isMobileView ? 'link-a' : ''}`} href="https://www.cypress.io/cloud#integrated_workflows">
+            <ChainSVG className={isMobileView ? '' : 'icon-container__svg'}/>
             Integrated Workflows
           </Button>
         </GridList>

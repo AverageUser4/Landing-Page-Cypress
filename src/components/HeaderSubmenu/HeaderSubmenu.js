@@ -40,11 +40,16 @@ function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiv
   }
 
   return (
-    <div className={css['container']}>
+    <div 
+      className={`
+        ${css['container']}
+        ${!isMobileView ? css['container--desktop'] : ''}
+      `}
+    >
       {
         isMobileView &&
           <Button
-            type="menu-item-reversed"
+            type="menu-item menu-item-reversed"
             hasArrow={true}
             onClick={() => setCurrentlyActiveSubmenu('')}
           >

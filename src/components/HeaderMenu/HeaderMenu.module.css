@@ -27,7 +27,7 @@
   width: 100%;
   height: 100%;
   
-  background-color: red;
+  /* background-color: red; */
 }
 
 .list {
@@ -40,7 +40,7 @@
   list-style: none;
 }
 .list--desktop {
-  background-color: cyan;
+  /* background-color: cyan; */
 
   display: flex;
   justify-content: center;

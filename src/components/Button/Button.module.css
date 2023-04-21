@@ -30,8 +30,7 @@
   outline-color: rgb(228, 251, 242);
 }
 
-.button--type-menu-item,
-.button--type-menu-item-reversed {
+.button--type-menu-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,10 +46,10 @@
 
   box-sizing: border-box;
 }
-.button--type-menu-item:hover,
-.button--type-menu-item-reversed:hover {
+.button--type-menu-item:hover {
   outline-color: transparent;
 }
+
 .button--type-menu-item-reversed {
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -60,6 +59,29 @@
 }
 .button--type-menu-item-reversed .arrow {
   transform: scaleX(-1);
+}
+
+.button--type-menu-item-a {
+  position: relative;
+}
+.button--type-menu-item-a::after {
+  content: '';
+
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  
+  display: block;
+  width: 0;
+  height: 2px;
+
+  background-color: rgb(105, 211, 167);
+
+  transition: width var(--transition-duration), left var(--transition-duration);
+}
+.button--type-menu-item-a:hover.button--type-menu-item-a::after {
+  left: 0;
+  width: 100%;
 }
 
 .button--type-round {
@@ -91,4 +113,13 @@
 }
 .button--type-link:hover {
   outline-color: transparent;
+}
+
+.button--type-link-a {
+  /* color: rgb(144, 149, 173); */
+  color: rgb(90, 95, 122);
+  transition: color var(--transition-duration);
+}
+.button--type-link-a:hover {
+  color: rgb(0, 119, 128);
 }

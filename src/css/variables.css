@@ -1,4 +1,6 @@
 :root {
   --header-height: 64px;
   --max-width: 1280px;
+
+  --transition-duration: 300ms;
 }

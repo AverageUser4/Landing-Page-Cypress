@@ -31,7 +31,7 @@ function HeaderMenu() {
                 <Button
                   onClick={() => setCurrentlyActiveSubmenu('product')}
                   hasArrow={isMobileView}
-                  type="menu-item"
+                  type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
                 >
                   Product
                 </Button>
@@ -41,7 +41,7 @@ function HeaderMenu() {
                 <Button
                   onClick={() => setCurrentlyActiveSubmenu('docs')}
                   hasArrow={isMobileView}
-                  type="menu-item"
+                  type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
                 >
                   Docs
                 </Button>
@@ -51,7 +51,7 @@ function HeaderMenu() {
                 <Button
                   onClick={() => setCurrentlyActiveSubmenu('community')}
                   hasArrow={isMobileView}
-                  type="menu-item"
+                  type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
                 >
                   Community
                 </Button>
@@ -61,7 +61,7 @@ function HeaderMenu() {
                 <Button
                   onClick={() => setCurrentlyActiveSubmenu('company')}
                   hasArrow={isMobileView}
-                  type="menu-item"
+                  type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
                 >
                   Company
                 </Button>
@@ -69,7 +69,7 @@ function HeaderMenu() {
 
               <li>
                 <Button
-                  type="menu-item"
+                  type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
                   href="https://www.cypress.io/pricing?v=1"
                 >
                   Pricing
@@ -102,7 +102,7 @@ function HeaderMenu() {
                   viewportWidth >= 1000 &&
                     <Button
                       hasArrow={true}
-                      type={'round'}
+                      type="round"
                     >
                       Install
                     </Button>

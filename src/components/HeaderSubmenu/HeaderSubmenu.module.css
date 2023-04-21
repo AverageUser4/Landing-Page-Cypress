@@ -11,3 +11,14 @@
 
   box-sizing: border-box;
 }
+.container--desktop {
+  top: 100%;
+
+  width: 500px;
+  height: auto;
+  padding: 0;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 2px 8px 0px;
+  border-radius: 8px;;
+}

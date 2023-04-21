@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+
+  border-radius: inherit;
+}
+
+.left {
+  padding: 32px 16px 16px;
+}
+
+.right {
+  padding: 32px 16px 16px;
+
+  background-color: rgb(243, 244, 250);
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}

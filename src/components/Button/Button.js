@@ -4,10 +4,16 @@ import css from './Button.module.css';
 
 import { ReactComponent as ArrowSVG } from './assets/arrow.svg';
 
-function Button({ children, href, ariaLabel, onClick, hasArrow, type }) {
+function Button({ children, href, ariaLabel, onClick, hasArrow, type, className }) {
+  let parsedTypes;
+  if(type) {
+    parsedTypes = type.replace(/\s/g, ' ').split(' ').filter(t => t).reduce((acc, cur) => acc + ' ' + css[`button--type-${cur}`], '');
+  }
+
   const classes = `
     ${css['button']}
-    ${type ? css[`button--type-${type}`] : ''}
+    ${parsedTypes}
+    ${className}
   `;
   const clickCallback = (event) => onClick && onClick(event);
   const arrow = <ArrowSVG className={css['arrow']}/>
@@ -45,6 +51,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   hasArrow: PropTypes.bool,
   type: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Button;
