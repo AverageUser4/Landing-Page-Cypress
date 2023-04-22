@@ -1,4 +1,3 @@
 TODO:
-  
+  - Install button is supposed to open a modal
 DONE:
-  -

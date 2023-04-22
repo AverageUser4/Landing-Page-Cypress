@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 
-import { WebpageStateProvider } from './context/WebpageState';
+import { ViewportProvider } from './context/Viewport';
+import { ScrollProvider } from './context/Scroll';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 root.render(
   <StrictMode>
-    <WebpageStateProvider>
-      <App/>
-    </WebpageStateProvider>
+    <ViewportProvider>
+      <ScrollProvider>
+        <App/>
+      </ScrollProvider>
+    </ViewportProvider>
   </StrictMode>
 );

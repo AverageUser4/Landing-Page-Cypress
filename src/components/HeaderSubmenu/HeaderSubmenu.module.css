@@ -1,7 +1,8 @@
 .container {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 100%;
+  z-index: 3;
 
   width: 100%;
   height: 100%;
@@ -10,7 +11,12 @@
   background-color: rgb(255, 255, 255);
 
   box-sizing: border-box;
+  transition: left var(--transition-duration);
 }
+.container--ready {
+  left: 0;
+}
+
 .container--desktop {
   --width: clamp(500px, 75vw, 600px);
   

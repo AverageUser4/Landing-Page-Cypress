@@ -8,8 +8,14 @@ import HeaderSubmenuDocs from '../HeaderSubmenuDocs/HeaderSubmenuDocs';
 import HeaderSubmenuCommunity from '../HeaderSubmenuCommunity/HeaderSubmenuCommunity';
 import HeaderSubmenuCompany from '../HeaderSubmenuCompany/HeaderSubmenuCompany';
 
+import useAppearanceTransition from '../../hooks/useAppearanceTransition';
+
 function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiveSubmenu }) {
-  if(!currentlyActiveSubmenu) {
+  const { 
+    transitionedElementRef, isReady, isRendered
+  } = useAppearanceTransition({ isOpen: currentlyActiveSubmenu ? true : false });
+
+  if(!isRendered) {
     return;
   }
 
@@ -44,7 +50,9 @@ function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiv
       className={`
         ${css['container']}
         ${!isMobileView ? css['container--desktop'] : ''}
+        ${isReady ? css['container--ready'] : ''}
       `}
+      ref={transitionedElementRef}
     >
       {
         isMobileView &&
