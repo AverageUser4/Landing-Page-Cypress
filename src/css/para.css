@@ -1,0 +1,12 @@
+.para {
+  margin: 0;
+
+  color: rgb(90, 95, 122);
+  line-height: 1.5;
+  font-size: 14px;
+  font-family: Roboto, sans-serif;
+}
+
+.para--centered {
+  text-align: center;
+}

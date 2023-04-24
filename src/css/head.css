@@ -1,0 +1,13 @@
+.head {
+  margin: 0;
+  
+  font-size: 18px;
+  font-weight: 300;
+  font-family: Roboto, sans-serif;
+  color: rgb(46, 50, 71);
+}
+
+.head--a {
+  color: rgb(27, 30, 46);
+  font-weight: 500;
+}

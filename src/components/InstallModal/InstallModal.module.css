@@ -1,0 +1,40 @@
+.container {
+  width: clamp(200px, 95vw, 400px);
+
+  background-color: rgb(255, 255, 255);
+  outline: 4px solid rgb(90, 95, 122);
+  border-radius: 4px;
+
+  box-sizing: border-box;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px;  
+
+  border-bottom: 1px solid rgb(225, 227, 237);
+}
+
+.top__left {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  width: 26px;
+  height: 1px;
+  margin: 0 12px;
+
+  background-color: rgb(225, 227, 237);
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+
+  padding: 32px;
+}
