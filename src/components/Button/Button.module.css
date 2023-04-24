@@ -20,6 +20,10 @@
 .button:hover {
   outline-color: rgb(243, 244, 250);
 }
+.button:focus-visible {
+  transition: none;
+  outline-color: rgb(0, 89, 93);
+}
 
 .button--type-a {
   background-color: rgb(163, 231, 203);

@@ -7,17 +7,30 @@ import HeaderSubmenu from '../HeaderSubmenu/HeaderSubmenu';
 
 import { useViewportContext } from '../../context/Viewport';
 import useAppearanceTransition from '../../hooks/useAppearanceTransition';
+import useFocusTrap from '../../hooks/useFocusTrap';
+import useKeyDown from '../../hooks/useKeyDown';
 
-const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
+const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView, setIsOpen, toggleButtonRef }) {
   const { viewportWidth } = useViewportContext();
 
   const [currentlyActiveSubmenu, setCurrentlyActiveSubmenu] = useState('');
-  const menuButtonsRef = useRef(new Map());
+  const menuButtonsMapRef = useRef(new Map());
   const changeTimeoutRef = useRef();
 
   const { 
-    transitionedElementRef, isReady, isRendered
+    transitionedElementRef: containerRef, isReady, isRendered
   } = useAppearanceTransition({ isOpen });
+
+  useFocusTrap({ 
+    isOpen,
+    containerRef,
+    toggleButton: toggleButtonRef.current,
+  });
+
+  useKeyDown({
+    callback: (event) => event.key === 'Escape' && setIsOpen(false),
+    isIgnore: !isMobileView,
+  });
 
   useEffect(() => {
     if(!isRendered) {
@@ -29,10 +42,12 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
     return;
   }
 
-  function doSetCurrentlyActiveSubmenu(newValue) {
+  function doSetCurrentlyActiveSubmenu(newValue, isForced) {
     clearTimeout(changeTimeoutRef.current);
     
-    if(newValue) {
+    if(!isForced && currentlyActiveSubmenu === newValue) {
+      setCurrentlyActiveSubmenu('');
+    } else if(newValue) {
       setCurrentlyActiveSubmenu(newValue);
     } else {
       changeTimeoutRef.current = setTimeout(() => {
@@ -43,9 +58,9 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
 
   function prepareRef(element, key) {
     if(!element) {
-      menuButtonsRef.current = new Map();
+      menuButtonsMapRef.current = new Map();
     } else {
-      menuButtonsRef.current.set(key, element);
+      menuButtonsMapRef.current.set(key, element);
     }
   }
 
@@ -56,7 +71,7 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
         ${!isMobileView ? css['menu--desktop'] : ''}
         ${isReady ? css['menu--ready'] : ''}
       `}
-      ref={transitionedElementRef}
+      ref={containerRef}
     >
       <ul 
         className={`
@@ -163,20 +178,21 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
         currentlyActiveSubmenu={currentlyActiveSubmenu}
         setCurrentlyActiveSubmenu={setCurrentlyActiveSubmenu}
         isHeaderMenuOpen={isOpen}
-        onPointerEnter={() => doSetCurrentlyActiveSubmenu(currentlyActiveSubmenu)}
-        onPointerLeave={() => doSetCurrentlyActiveSubmenu('')}
-        menuButtonsRef={menuButtonsRef}
+        onPointerEnter={() => !isMobileView && doSetCurrentlyActiveSubmenu(currentlyActiveSubmenu, true)}
+        onPointerLeave={() => !isMobileView && doSetCurrentlyActiveSubmenu('')}
+        menuButtonsMapRef={menuButtonsMapRef}
       />
 
       {isMobileView && <div className={css['transition-bar']}/>}
-
     </nav>
   );
 });
 
 HeaderMenu.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
   isMobileView: PropTypes.bool.isRequired,
+  toggleButtonRef: PropTypes.object.isRequired,
 };
 
 export default HeaderMenu;

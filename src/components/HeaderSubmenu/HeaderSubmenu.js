@@ -9,16 +9,34 @@ import HeaderSubmenuCommunity from '../HeaderSubmenuCommunity/HeaderSubmenuCommu
 import HeaderSubmenuCompany from '../HeaderSubmenuCompany/HeaderSubmenuCompany';
 
 import useAppearanceTransition from '../../hooks/useAppearanceTransition';
+import useFocusTrap from '../../hooks/useFocusTrap';
+import useOutsideClick from '../../hooks/useOutsideClick';
 import { useViewportContext } from '../../context/Viewport';
 
 const ALIGNMENT_WIDTH = 1060;
 
-function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiveSubmenu, onPointerEnter, onPointerLeave, menuButtonsRef }) {  
+function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiveSubmenu, onPointerEnter, onPointerLeave, menuButtonsMapRef }) {  
   const { viewportWidth } = useViewportContext();
   
   const { 
-    transitionedElementRef, isReady, isRendered
+    transitionedElementRef: containerRef, isReady, isRendered
   } = useAppearanceTransition({ isOpen: currentlyActiveSubmenu ? true : false });
+
+  useFocusTrap({ 
+    isOpen: currentlyActiveSubmenu,
+    containerRef,
+    toggleButton: !isMobileView && menuButtonsMapRef.current?.get(currentlyActiveSubmenu),
+  });
+
+  useOutsideClick({
+    containerRef,
+    outsideElementsThatDontTrigger: [menuButtonsMapRef.current?.get(currentlyActiveSubmenu)],
+    isInvokeCallbackOnEscapeKey: true,
+    callback: () => {
+      setCurrentlyActiveSubmenu('');
+    },
+    isIgnore: isMobileView,
+  });
 
   const [buttonCenters, setButtonCenters] = useState();
   const lastActiveSubmenuRef = useRef(currentlyActiveSubmenu);
@@ -35,11 +53,11 @@ function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiv
 
     const newButtonCenters = new Map();
     for(const value of ['product', 'docs', 'community', 'company']) {
-      newButtonCenters.set(value, getCenter(menuButtonsRef.current.get(value)));
+      newButtonCenters.set(value, getCenter(menuButtonsMapRef.current.get(value)));
     }
     
     setButtonCenters(newButtonCenters);
-  }, [viewportWidth, menuButtonsRef]);
+  }, [viewportWidth, menuButtonsMapRef]);
 
   if(currentlyActiveSubmenu) {
     lastActiveSubmenuRef.current = currentlyActiveSubmenu;
@@ -83,10 +101,17 @@ function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiv
         ${!isMobileView ? css['container--desktop'] : ''}
         ${isReady ? css['container--ready'] : ''}
       `}
-      ref={transitionedElementRef}
+      ref={containerRef}
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
-      style={viewportWidth >= ALIGNMENT_WIDTH ? { left: buttonCenters.get(usedSubmenu), transform: 'translateX(-50%)' } : {}}
+      style={
+        ((viewportWidth >= ALIGNMENT_WIDTH) && buttonCenters) ?
+          { 
+            left: buttonCenters.get(usedSubmenu),
+            transform: 'translateX(-50%)',
+          } 
+        : {}
+      }
     >
       {
         isMobileView &&
@@ -112,7 +137,7 @@ HeaderSubmenu.propTypes = {
   setCurrentlyActiveSubmenu: PropTypes.func.isRequired,
   onPointerEnter: PropTypes.func.isRequired,
   onPointerLeave: PropTypes.func.isRequired,
-  menuButtonsRef: PropTypes.object.isRequired,
+  menuButtonsMapRef: PropTypes.object.isRequired,
 };
 
 export default HeaderSubmenu;

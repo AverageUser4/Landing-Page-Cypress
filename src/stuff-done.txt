@@ -1,4 +1,5 @@
 TODO:
   - Install button is supposed to open a modal
-  - buttons dont have outline so they also dont have them when tabbed
+  - escape closes both submenu and menu when escape key is pressed, 
+  find a way to close only the most nested popup
 DONE:

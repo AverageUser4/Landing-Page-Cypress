@@ -7,15 +7,21 @@ function useAppearanceTransition({ isOpen }) {
   const isRendered = isOpen || isTransitioned;
 
   useEffect(() => {
+    function onTransitionEnd() {
+      setIsTransitioned(false);
+    }
+    
     if(isOpen) {
       setIsReady(true);
       setIsTransitioned(isOpen);
     } else {
       setIsReady(false);
-      transitionedElementRef.current?.addEventListener('transitionend', () => {
-        setIsTransitioned(false);
-      }, { once: true });
+      transitionedElementRef.current?.addEventListener('transitionend', onTransitionEnd, { once: true });
     }
+
+    return () => {
+      removeEventListener('transitionend', onTransitionEnd);
+    };
   }, [isOpen]);
 
   return {

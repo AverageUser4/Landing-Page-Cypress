@@ -46,7 +46,7 @@
   transition: bottom var(--transition);
 }
 .menu--ready .transition-bar {
-  bottom: calc(100% - 16px);
+  bottom: calc(100% - 14px);
 }
 
 .list {

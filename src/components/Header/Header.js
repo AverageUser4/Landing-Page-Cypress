@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './Header.module.css';
 
@@ -14,11 +14,14 @@ function Header({ isBackgroundTransparentWhenOnTop }) {
   const { scrollY } = useScrollContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobileView = viewportWidth < 640;
+  const menuToggleButtonRef = useRef()
 
   const menu = (
     <HeaderMenu
       isOpen={isMenuOpen}
+      setIsOpen={setIsMenuOpen}
       isMobileView={isMobileView}
+      toggleButtonRef={menuToggleButtonRef}
     />  
   );
   
@@ -38,7 +41,8 @@ function Header({ isBackgroundTransparentWhenOnTop }) {
               <MenuToggleButton
                 isOpen={isMenuOpen}
                 setIsOpen={setIsMenuOpen}
-              />
+                ref={menuToggleButtonRef}
+              />  
           }
         </div>
       </header>
