@@ -11,16 +11,18 @@
   background-color: rgb(255, 255, 255);
 
   box-sizing: border-box;
-  transition: left var(--transition-duration);
+  transition: left var(--transition);
 }
 .container--ready {
   left: 0;
 }
 
 .container--desktop {
+  position: fixed;
+  
   --width: clamp(500px, 75vw, 600px);
   
-  top: 100%;
+  top: var(--header-height);
   left: calc(50% - var(--width) / 2);
 
   width: var(--width);
@@ -29,5 +31,11 @@
 
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 2px 8px 0px;
-  border-radius: 8px;;
+  border-radius: 8px;
+  opacity: 0;
+
+  transition: opacity var(--transition);
+}
+.container--desktop.container--ready {
+  opacity: 1;
 }

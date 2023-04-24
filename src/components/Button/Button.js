@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import css from './Button.module.css';
 
 import { ReactComponent as ArrowSVG } from './assets/arrow.svg';
 
-function Button({ children, href, ariaLabel, onClick, hasArrow, type, className }) {
+const Button = forwardRef(function Button({ children, href, ariaLabel, onClick, hasArrow, type, className, onPointerEnter, onPointerLeave }, ref) {
   let parsedTypes;
   if(type) {
     parsedTypes = type.replace(/\s/g, ' ').split(' ').filter(t => t).reduce((acc, cur) => acc + ' ' + css[`button--type-${cur}`], '');
@@ -16,6 +16,8 @@ function Button({ children, href, ariaLabel, onClick, hasArrow, type, className 
     ${className}
   `;
   const clickCallback = (event) => onClick && onClick(event);
+  const pointerEnterCallback = (event) => onPointerEnter && onPointerEnter(event);
+  const pointerLeaveCallback = (event) => onPointerLeave && onPointerLeave(event);
   const arrow = <ArrowSVG className={css['arrow']}/>
 
   if(href) {
@@ -25,6 +27,8 @@ function Button({ children, href, ariaLabel, onClick, hasArrow, type, className 
         href={href}
         aria-label={ariaLabel}
         onClick={clickCallback}
+        onPointerEnter={pointerEnterCallback}
+        onPointerLeave={pointerLeaveCallback}
       >
         {children}
         {hasArrow && arrow}
@@ -37,12 +41,15 @@ function Button({ children, href, ariaLabel, onClick, hasArrow, type, className 
       className={classes}
       aria-label={ariaLabel}
       onClick={clickCallback}
+      onPointerEnter={pointerEnterCallback}
+      onPointerLeave={pointerLeaveCallback}
+      ref={ref}
     >
       {children}
       {hasArrow && arrow}
     </button>
   );
-}
+});
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
@@ -52,6 +59,8 @@ Button.propTypes = {
   hasArrow: PropTypes.bool,
   type: PropTypes.string,
   className: PropTypes.string,
+  onPointerEnter: PropTypes.func,
+  onPointerLeave: PropTypes.func,
 };
 
 export default Button;

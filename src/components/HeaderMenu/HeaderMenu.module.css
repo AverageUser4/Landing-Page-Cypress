@@ -1,6 +1,6 @@
 .menu {
   position: fixed;
-  top: var(--header-height);
+  bottom: 100%;
   left: 0;
   z-index: 3;
   
@@ -9,13 +9,12 @@
 
   background-color: rgb(255, 255, 255);
 
-  transform: translateY(calc(-100% - var(--header-height)));
-  transition: transform var(--transition-duration);
+  transition: bottom var(--transition);
   box-sizing: border-box;
   flex-grow: 1;
 }
 .menu--ready {
-  transform: translateY(0);
+  bottom: 0;
 }
 .menu--desktop {
   display: flex;
@@ -44,7 +43,7 @@
   height: var(--header-height);
 
   background-color: rgb(255, 255, 255);
-  transition: bottom var(--transition-duration);
+  transition: bottom var(--transition);
 }
 .menu--ready .transition-bar {
   bottom: calc(100% - 16px);

@@ -20,7 +20,7 @@ button:hover {
 
 .icon-container__svg {
   opacity: 0.65;
-  transition: opacity var(--transition-duration);
+  transition: opacity var(--transition);
 }
 .icon-container__svg .icon-container__svg-part {
   fill: rgb(225, 227, 237);
@@ -28,5 +28,5 @@ button:hover {
 
 .icon-container__svg-part {
   fill: rgb(163, 231, 203);
-  transition: fill var(--transition-duration);
+  transition: fill var(--transition);
 }

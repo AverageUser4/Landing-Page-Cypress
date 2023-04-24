@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './HeaderSubmenu.module.css';
 
@@ -9,19 +9,50 @@ import HeaderSubmenuCommunity from '../HeaderSubmenuCommunity/HeaderSubmenuCommu
 import HeaderSubmenuCompany from '../HeaderSubmenuCompany/HeaderSubmenuCompany';
 
 import useAppearanceTransition from '../../hooks/useAppearanceTransition';
+import { useViewportContext } from '../../context/Viewport';
 
-function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiveSubmenu }) {
+const ALIGNMENT_WIDTH = 1060;
+
+function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiveSubmenu, onPointerEnter, onPointerLeave, menuButtonsRef }) {  
+  const { viewportWidth } = useViewportContext();
+  
   const { 
     transitionedElementRef, isReady, isRendered
   } = useAppearanceTransition({ isOpen: currentlyActiveSubmenu ? true : false });
+
+  const [buttonCenters, setButtonCenters] = useState();
+  const lastActiveSubmenuRef = useRef(currentlyActiveSubmenu);
+
+  useEffect(() => {
+    if(viewportWidth < ALIGNMENT_WIDTH) {
+      return;
+    }
+
+    function getCenter(element) {
+      const { left, width } = element.getBoundingClientRect();
+      return Math.round(left + (width / 2));
+    }
+
+    const newButtonCenters = new Map();
+    for(const value of ['product', 'docs', 'community', 'company']) {
+      newButtonCenters.set(value, getCenter(menuButtonsRef.current.get(value)));
+    }
+    
+    setButtonCenters(newButtonCenters);
+  }, [viewportWidth, menuButtonsRef]);
+
+  if(currentlyActiveSubmenu) {
+    lastActiveSubmenuRef.current = currentlyActiveSubmenu;
+  }
 
   if(!isRendered) {
     return;
   }
 
+  const usedSubmenu = currentlyActiveSubmenu || lastActiveSubmenuRef.current;
   let content;
 
-  switch(currentlyActiveSubmenu) {
+  switch(usedSubmenu) {
     case '':
       break;
 
@@ -42,7 +73,7 @@ function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiv
       break;
 
     default:
-      console.error('Unrecognized submenu provided:', currentlyActiveSubmenu);
+      console.error('Unrecognized submenu provided:', usedSubmenu);
   }
 
   return (
@@ -53,6 +84,9 @@ function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiv
         ${isReady ? css['container--ready'] : ''}
       `}
       ref={transitionedElementRef}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
+      style={viewportWidth >= ALIGNMENT_WIDTH ? { left: buttonCenters.get(usedSubmenu), transform: 'translateX(-50%)' } : {}}
     >
       {
         isMobileView &&
@@ -61,7 +95,7 @@ function HeaderSubmenu({ isMobileView, currentlyActiveSubmenu, setCurrentlyActiv
             hasArrow={true}
             onClick={() => setCurrentlyActiveSubmenu('')}
           >
-            {currentlyActiveSubmenu}
+            {usedSubmenu}
           </Button>
       }
 
@@ -76,6 +110,9 @@ HeaderSubmenu.propTypes = {
     '', 'product', 'docs', 'community', 'company', 'pricing',
   ]).isRequired,
   setCurrentlyActiveSubmenu: PropTypes.func.isRequired,
+  onPointerEnter: PropTypes.func.isRequired,
+  onPointerLeave: PropTypes.func.isRequired,
+  menuButtonsRef: PropTypes.object.isRequired,
 };
 
 export default HeaderSubmenu;

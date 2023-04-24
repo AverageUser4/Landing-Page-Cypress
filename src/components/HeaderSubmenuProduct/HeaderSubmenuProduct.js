@@ -24,7 +24,7 @@ function HeaderSubmenuProduct({ isMobileView }) {
 
   return (
     <div 
-      style={ isMobileView ? {} : { padding: '0 16px' }}
+      style={ isMobileView ? {} : { padding: '0 32px' }}
     >
       <HeaderSubmenuSection hasBorder={isMobileView}>
         <FancyHeading

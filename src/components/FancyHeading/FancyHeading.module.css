@@ -36,7 +36,7 @@
 
   width: 0px;
 
-  transition: width 300ms;
+  transition: var(--transition);
 }
 .container:hover .arrow {
   width: 16px;

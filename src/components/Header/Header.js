@@ -14,6 +14,13 @@ function Header({ isBackgroundTransparentWhenOnTop }) {
   const { scrollY } = useScrollContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobileView = viewportWidth < 640;
+
+  const menu = (
+    <HeaderMenu
+      isOpen={isMenuOpen}
+      isMobileView={isMobileView}
+    />  
+  );
   
   return (
     <>
@@ -25,13 +32,7 @@ function Header({ isBackgroundTransparentWhenOnTop }) {
       >
         <div className={css['header-content']}>
           <Logo/>
-          {
-            !isMobileView &&
-              <HeaderMenu
-                isOpen={isMenuOpen}
-                isMobileView={isMobileView}
-              />
-          }
+          {!isMobileView && menu}
           {
             isMobileView &&
               <MenuToggleButton
@@ -42,13 +43,7 @@ function Header({ isBackgroundTransparentWhenOnTop }) {
         </div>
       </header>
 
-      {
-        isMobileView &&
-          <HeaderMenu
-            isOpen={isMenuOpen}
-            isMobileView={isMobileView}
-          />
-      }
+      {isMobileView && menu}
     </>
   );
 }

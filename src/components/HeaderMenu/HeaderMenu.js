@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import css from './HeaderMenu.module.css';
 
@@ -12,13 +12,41 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
   const { viewportWidth } = useViewportContext();
 
   const [currentlyActiveSubmenu, setCurrentlyActiveSubmenu] = useState('');
+  const menuButtonsRef = useRef(new Map());
+  const changeTimeoutRef = useRef();
 
   const { 
     transitionedElementRef, isReady, isRendered
   } = useAppearanceTransition({ isOpen });
 
+  useEffect(() => {
+    if(!isRendered) {
+      setCurrentlyActiveSubmenu('');
+    }
+  }, [isRendered]);
+
   if(isMobileView && !isRendered) {
     return;
+  }
+
+  function doSetCurrentlyActiveSubmenu(newValue) {
+    clearTimeout(changeTimeoutRef.current);
+    
+    if(newValue) {
+      setCurrentlyActiveSubmenu(newValue);
+    } else {
+      changeTimeoutRef.current = setTimeout(() => {
+        setCurrentlyActiveSubmenu('');
+      }, 300);
+    }
+  }
+
+  function prepareRef(element, key) {
+    if(!element) {
+      menuButtonsRef.current = new Map();
+    } else {
+      menuButtonsRef.current.set(key, element);
+    }
   }
 
   return (
@@ -38,19 +66,25 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
       >
         <li>
           <Button
-            onClick={() => setCurrentlyActiveSubmenu('product')}
+            onClick={() => doSetCurrentlyActiveSubmenu('product')}
+            onPointerEnter={() => !isMobileView && doSetCurrentlyActiveSubmenu('product')}
+            onPointerLeave={() => !isMobileView && doSetCurrentlyActiveSubmenu('')}
             hasArrow={isMobileView}
             type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
-          >
+            ref={(element) => prepareRef(element, 'product')}
+          > 
             Product
           </Button>
         </li>
 
         <li>
           <Button
-            onClick={() => setCurrentlyActiveSubmenu('docs')}
+            onClick={() => doSetCurrentlyActiveSubmenu('docs')}
+            onPointerEnter={() => !isMobileView && doSetCurrentlyActiveSubmenu('docs')}
+            onPointerLeave={() => !isMobileView && doSetCurrentlyActiveSubmenu('')}
             hasArrow={isMobileView}
             type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
+            ref={(element) => prepareRef(element, 'docs')}
           >
             Docs
           </Button>
@@ -58,9 +92,12 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
 
         <li>
           <Button
-            onClick={() => setCurrentlyActiveSubmenu('community')}
+            onClick={() => doSetCurrentlyActiveSubmenu('community')}
+            onPointerEnter={() => !isMobileView && doSetCurrentlyActiveSubmenu('community')}
+            onPointerLeave={() => !isMobileView && doSetCurrentlyActiveSubmenu('')}
             hasArrow={isMobileView}
             type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
+            ref={(element) => prepareRef(element, 'community')}
           >
             Community
           </Button>
@@ -68,9 +105,12 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
 
         <li>
           <Button
-            onClick={() => setCurrentlyActiveSubmenu('company')}
+            onClick={() => doSetCurrentlyActiveSubmenu('company')}
+            onPointerEnter={() => !isMobileView && doSetCurrentlyActiveSubmenu('company')}
+            onPointerLeave={() => !isMobileView && doSetCurrentlyActiveSubmenu('')}
             hasArrow={isMobileView}
             type={`menu-item ${!isMobileView ? 'menu-item-a' : ''}`}
+            ref={(element) => prepareRef(element, 'company')}
           >
             Company
           </Button>
@@ -122,6 +162,10 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView }) {
         isMobileView={isMobileView}
         currentlyActiveSubmenu={currentlyActiveSubmenu}
         setCurrentlyActiveSubmenu={setCurrentlyActiveSubmenu}
+        isHeaderMenuOpen={isOpen}
+        onPointerEnter={() => doSetCurrentlyActiveSubmenu(currentlyActiveSubmenu)}
+        onPointerLeave={() => doSetCurrentlyActiveSubmenu('')}
+        menuButtonsRef={menuButtonsRef}
       />
 
       {isMobileView && <div className={css['transition-bar']}/>}

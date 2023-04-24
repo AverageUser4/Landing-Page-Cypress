@@ -6,12 +6,16 @@
 
 .left,
 .right {
-  padding: 32px 16px 16px;
   flex-grow: 1;
+  padding: 32px 16px 16px;
+}
+
+.left {
+  padding-left: 32px;
 }
 
 .right {
-  padding: 32px 16px 16px;
+  padding-right: 32px;
 
   background-color: rgb(243, 244, 250);
   border-top-right-radius: inherit;
