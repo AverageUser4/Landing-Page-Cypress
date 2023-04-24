@@ -1,0 +1,22 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 100vw;
+  height: 100vh;
+  
+  background-color: rgba(46, 50, 71, 0.92);
+  backdrop-filter: blur(8px);
+
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.background--ready {
+  opacity: 1;
+}

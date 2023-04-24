@@ -2,4 +2,6 @@ TODO:
   - Install button is supposed to open a modal
   - escape closes both submenu and menu when escape key is pressed, 
   find a way to close only the most nested popup
+  - as menu has widht of 100vh, scrolling it is currently not possible if it overflows
+  - use aria-modal and role="dialog" when needed
 DONE:

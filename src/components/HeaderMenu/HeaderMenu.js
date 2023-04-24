@@ -9,6 +9,7 @@ import { useViewportContext } from '../../context/Viewport';
 import useAppearanceTransition from '../../hooks/useAppearanceTransition';
 import useFocusTrap from '../../hooks/useFocusTrap';
 import useKeyDown from '../../hooks/useKeyDown';
+import InstallButton from '../InstallButton/InstallButton';
 
 const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView, setIsOpen, toggleButtonRef }) {
   const { viewportWidth } = useViewportContext();
@@ -25,6 +26,7 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView, setIsOpen, t
     isOpen,
     containerRef,
     toggleButton: toggleButtonRef.current,
+    isIgnore: !isMobileView,
   });
 
   useKeyDown({
@@ -164,12 +166,7 @@ const HeaderMenu = memo(function HeaderMenu({ isOpen, isMobileView, setIsOpen, t
 
           {
             viewportWidth >= 1000 &&
-              <Button
-                hasArrow={true}
-                type="round"
-              >
-                Install
-              </Button>
+              <InstallButton/>
           }
       </div>
 

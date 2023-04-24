@@ -30,7 +30,7 @@
   color: rgb(0, 89, 93);
   border-color: rgb(105, 211, 167);
 }
-.button--type-a:hover {
+.button--type-a:hover:not(:focus-visible) {
   outline-color: rgb(228, 251, 242);
 }
 
@@ -50,7 +50,7 @@
 
   box-sizing: border-box;
 }
-.button--type-menu-item:hover {
+.button--type-menu-item:hover:not(:focus-visible) {
   outline-color: transparent;
 }
 
@@ -83,7 +83,8 @@
 
   transition: width var(--transition), left var(--transition);
 }
-.button--type-menu-item-a:hover.button--type-menu-item-a::after {
+.button--type-menu-item-a:hover.button--type-menu-item-a::after,
+.button--type-menu-item-a:focus-visible.button--type-menu-item-a::after {
   left: 0;
   width: 100%;
 }
@@ -97,7 +98,7 @@
   color: rgb(0, 89, 93);
   border-radius: 2em;
 }
-.button--type-round:hover {
+.button--type-round:hover:not(:focus-visible) {
   outline-color: transparent;
 }
 .button--type-round .arrow {
@@ -116,7 +117,7 @@
   font-size: 14px;
   border: none;
 }
-.button--type-link:hover {
+.button--type-link:hover:not(:focus-visible) {
   outline-color: transparent;
 }
 

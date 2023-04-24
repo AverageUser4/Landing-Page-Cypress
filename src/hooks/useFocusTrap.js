@@ -1,14 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { getFocusableChildNodes } from '../misc/utils';
 
-function useFocusTrap({ isOpen, containerRef, toggleButton }) {
+function useFocusTrap({ isOpen, containerRef, toggleButton, isIgnore }) {
+  const lastKeyPressTime = useRef(0);
+  
   useEffect(() => {
-    let focusableElements;
+    if(isIgnore) {
+      return;
+    }
+    
     let first;
     let last;
 
     function onKeyDown(event) {
-      if(event.key !== 'Tab') {
+      lastKeyPressTime.current = Date.now();
+      
+      if(!containerRef.current || event.key !== 'Tab') {
         return;
       }
 
@@ -18,11 +25,11 @@ function useFocusTrap({ isOpen, containerRef, toggleButton }) {
           if(toggleButton) {
             toggleButton.focus();
           } else {
-            first.focus();
+            first?.focus();
           }
         } else if(document.activeElement === toggleButton) {
           event.preventDefault();
-          first.focus();
+          first?.focus();
         }
       } else {
         if(document.activeElement === first) {
@@ -30,30 +37,35 @@ function useFocusTrap({ isOpen, containerRef, toggleButton }) {
           if(toggleButton) {
             toggleButton.focus();
           } else {
-            last.focus();
+            last?.focus();
           }
         } else if(document.activeElement === toggleButton) {
           event.preventDefault();
-          last.focus();
+          last?.focus();
         }
       }
     }
 
     if(containerRef.current) {
-      focusableElements = getFocusableChildNodes(containerRef.current);
+      const focusableElements = getFocusableChildNodes(containerRef.current);
       first = focusableElements[0];
       last = focusableElements[focusableElements.length - 1];
 
       if(isOpen) {
-        first.focus();
-        window.addEventListener('keydown', onKeyDown);
+        first?.focus();
+
+        if(Date.now() - lastKeyPressTime.current > 300) {
+          first?.blur();
+        }
       }
     }
+
+    window.addEventListener('keydown', onKeyDown);
 
     return () => {
       window.removeEventListener('keydown', onKeyDown);
     };
-  }, [isOpen, containerRef, toggleButton]);
+  }, [isOpen, containerRef, toggleButton, isIgnore]);
 }
 
 export default useFocusTrap;
