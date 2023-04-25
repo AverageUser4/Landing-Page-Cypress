@@ -27,6 +27,8 @@ function Header({ isBackgroundTransparentWhenOnTop }) {
   
   return (
     <>
+      <div className={css['placeholder']}/>
+    
       <header 
         className={`
           ${css['header']}

@@ -26,3 +26,8 @@
   max-width: var(--max-width);
   margin: 0 auto;
 }
+
+.placeholder {
+  width: 100%;
+  height: var(--header-height);
+}

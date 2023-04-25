@@ -1,0 +1,11 @@
+.container { 
+  background-color: rgb(240, 252, 248);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}

@@ -4,7 +4,12 @@ import css from './Separator.module.css';
 
 function Separator({ text, isVertical }) {
   return (
-    <div className={css['container']}>
+    <div 
+      className={`
+        ${css['container']}
+        ${isVertical ? css['container--vertical'] : ''}
+      `}
+    >
       {text}
     </div>
   );

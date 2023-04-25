@@ -13,7 +13,7 @@ import getData from '../../misc/HeaderSubmenuElementsData';
 import { ReactComponent as BookSVG } from './assets/book.svg';
 import { ReactComponent as HatSVG } from './assets/hat.svg';
 import { ReactComponent as TagSVG } from './assets/tag.svg';
-import { ReactComponent as BookSmallSVG } from './assets/book-small.svg';
+import { ReactComponent as BookSmallSVG } from '../../assets/icons/book-small.svg';
 import { ReactComponent as QuestionMarkSVG } from './assets/question-mark.svg';
 
 function HeaderSubmenuDocs({ isMobileView }) {

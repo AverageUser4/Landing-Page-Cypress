@@ -7,6 +7,8 @@ import Button from '../Button/Button';
 import Card from '../Card/Card';
 import Separator from '../Separator/Separator';
 
+import { useViewportContext } from '../../context/Viewport';
+
 import { ReactComponent as QuestionMarkSVG } from './assets/question-mark.svg';
 import { ReactComponent as CrossSVG } from './assets/cross.svg';
 import { ReactComponent as TerminalSVG } from './assets/terminal.svg';
@@ -15,13 +17,21 @@ import { ReactComponent as ClipboardSVG } from './assets/clipboard.svg';
 import { ReactComponent as DownloadSVG } from './assets/download.svg';
 
 function InstallModal({ isOpen, setIsOpen }) {
+  const { viewportWidth } = useViewportContext();
+  const isDesktopView = viewportWidth >= 780;
+  
   return (
     <>
       <Modal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       >
-        <div className={css['container']}>
+        <div 
+          className={`
+            ${css['container']}
+            ${isDesktopView ? css['container--desktop'] : ''}
+          `}
+        >
 
           <div className={css['top']}>
             <div className={css['top__left']}>
@@ -40,6 +50,7 @@ function InstallModal({ isOpen, setIsOpen }) {
               <Button 
                 type="icon"
                 onClick={() => setIsOpen(false)}
+                ariaLabel="Close."
               >
                 <CrossSVG/>
               </Button>
@@ -61,6 +72,7 @@ function InstallModal({ isOpen, setIsOpen }) {
 
             <Separator
               text="OR"
+              isVertical={isDesktopView}
             />
 
             <Card
