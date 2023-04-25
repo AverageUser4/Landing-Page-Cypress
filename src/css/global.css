@@ -8,7 +8,7 @@
     background-color: royalblue;
   }
   
-  button:hover {
+  button:hover:not(:disabled) {
     cursor: pointer;
   }
   

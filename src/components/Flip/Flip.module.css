@@ -1,0 +1,39 @@
+.container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding-top: 67%;
+}
+
+.page {
+  position: absolute;
+  top: 10%;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  background-color: transparent;
+  border: none;
+
+  transition: transform var(--transition), opacity var(--transition);
+}
+.page--active {
+  z-index: 1;
+  opacity: 1;
+}
+.page--inactive {
+  transform: translateY(-8%) scale(95%);
+  opacity: 0.9;
+}
+
+.page > * {
+  display: block;
+  width: 100%;
+}
