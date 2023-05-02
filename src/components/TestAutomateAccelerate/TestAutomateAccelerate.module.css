@@ -1,5 +1,5 @@
 .container {
-  padding: clamp(32px, 5vw, 64px) 16px;
+  padding: clamp(32px, 10vw, 124px) 16px;
   
   background-color: rgb(240, 252, 248);
 }

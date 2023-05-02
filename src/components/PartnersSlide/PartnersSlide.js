@@ -1,6 +1,8 @@
 import React from "react";
+import css from './PartnersSlide.module.css';
 
 import Slide from "../Slide/Slide";
+import { useViewportContext } from "../../context/Viewport";
 
 import { ReactComponent as ViacomSVG } from './assets/viacom.svg';
 import { ReactComponent as HouzzSVG } from './assets/houzz.svg';
@@ -14,10 +16,21 @@ import { ReactComponent as PayPalSVG } from './assets/paypal.svg';
 import { ReactComponent as BarkSVG } from './assets/bark.svg';
 
 function PartnersSlide() {
+  const { viewportWidth } = useViewportContext();
+  let elementsPerPage = 2;
+
+  if(viewportWidth >= 500) {
+    elementsPerPage = 3;
+  }
+  if(viewportWidth >= 800) {
+    elementsPerPage = 4;
+  }
+  
   return (
-    <Slide>
+    <Slide elementsPerPage={elementsPerPage}>
 
       <a 
+        className={css['element']}
         href="https://www.paramount.com/"
         aria-label="ViacomCBS"
       >
@@ -25,6 +38,7 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://www.houzz.com/"
         aria-label="Houzz"
       >
@@ -32,6 +46,7 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://www.trulia.com/"
         aria-label="Trulia"
       >
@@ -39,6 +54,7 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://fortune.com/"
         aria-label="Fortune"
       >
@@ -46,6 +62,7 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://classpass.com/"
         aria-label="Classpass"
       >
@@ -53,6 +70,7 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://www.nielsen.com/"
         aria-label="Nielsen"
       >
@@ -60,6 +78,7 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://www.warbyparker.com/"
         aria-label="WarbyParker"
       >
@@ -67,6 +86,7 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://www.mercari.com/"
         aria-label="Mercari"
       >
@@ -74,6 +94,7 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://www.paypal.com/"
         aria-label="PayPal"
       >
@@ -81,8 +102,10 @@ function PartnersSlide() {
       </a>
 
       <a 
+        className={css['element']}
         href="https://bark.co/"
         aria-label="Bark"
+        style={{ width: 100 }}
       >
         <BarkSVG/>
       </a>
