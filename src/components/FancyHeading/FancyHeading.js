@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './FancyHeading.module.css';
 
-import { ReactComponent as FullArrowSVG } from './assets/full-arrow.svg';
+import { ReactComponent as FullArrowSVG } from '../../assets/icons/full-arrow.svg';
 
 function FancyHeading({ Icon, heading, text, href }) {
   const contents = (

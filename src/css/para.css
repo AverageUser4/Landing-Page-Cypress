@@ -7,8 +7,10 @@
   font-family: Roboto, sans-serif;
 }
 
-.para--centered {
-  text-align: center;
+.para--a {
+  font-size: 16px;
+  color: rgb(90, 95, 122);
+  font-family: Segoe UI, Roboto, sans-serif;
 }
 
 .para--b {
@@ -16,6 +18,11 @@
   font-family: Poppins, sans-serif;
   text-align: center;
 }
-.para--b--0 {
+
+.para--medium {
   font-size: 18px;
+}
+
+.para--centered {
+  text-align: center;
 }
