@@ -6,7 +6,6 @@ import InstallButton from '../InstallButton/InstallButton';
 import Flip from '../Flip/Flip';
 
 import { ReactComponent as BookSmallSVG } from '../../assets/icons/book-small.svg';
-import { ReactComponent as WaveSVG } from './assets/wave.svg';
 import codeSrc from './assets/code.jpg';
 import videoSrc from './assets/video.jpg';
 import PartnersSlide from '../PartnersSlide/PartnersSlide';
@@ -38,10 +37,6 @@ function TestAutomateAccelerate() {
           />
 
           <PartnersSlide/>
-          
-          {/* <div style={{ backgroundColor: 'red', color: 'blue' }}>
-            <WaveSVG width="100%"/>
-          </div> */}
         </div>
       </div>
     </>

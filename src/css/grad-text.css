@@ -3,3 +3,6 @@
   background-image: linear-gradient(-90deg, rgb(73, 86, 227), rgb(0, 129, 77));
   color: transparent;
 }
+.grad-text--a {
+  background-image: linear-gradient(to right, rgb(73, 86, 227), rgb(127, 67, 201));
+}

@@ -1,0 +1,24 @@
+.container {
+  padding: clamp(32px, 10vw, 124px) 16px;
+  
+  background-color: rgb(255, 255, 255);
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  margin: 20px 0;
+}

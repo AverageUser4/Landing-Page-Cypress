@@ -20,3 +20,6 @@
   text-align: center;
   line-height: 1.4;
 }
+.head--b--0 {
+  font-size: clamp(26px, 3.5vw, 40px);
+}
