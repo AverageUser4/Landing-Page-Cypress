@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import css from './GridList.module.css';
 
-function GridList({ children, columnsCount = 2 }) {
+function GridList({ children, columnsCount = 2, isHorizontal }) {
   let listItems = children;
 
   if(Array.isArray(children)) {
@@ -19,6 +19,7 @@ function GridList({ children, columnsCount = 2 }) {
     <ul
       className={`
         ${css['list']}
+        ${isHorizontal && css['list--horizontal']}
       `}
       style={{
         gridTemplateColumns: `repeat(${columnsCount}, auto)`,
@@ -32,6 +33,7 @@ function GridList({ children, columnsCount = 2 }) {
 GridList.propTypes = {
   children: PropTypes.node.isRequired,
   columnsCount: PropTypes.number,
+  isHorizontal: PropTypes.bool,
 };
 
 export default GridList;

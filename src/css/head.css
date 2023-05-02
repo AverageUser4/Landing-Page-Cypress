@@ -28,6 +28,22 @@
   font-weight: 600;
 }
 
+.head--d {
+  color: rgb(46, 50, 71);
+  font-family: Poppins, Roboto, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  font-size: 14px;
+}
+
 .head--medium {
   font-size: clamp(26px, 3.5vw, 40px);
+}
+
+.head--color-a {
+  color: rgb(0, 49, 49);
+}
+
+.head--bit-bold {
+  font-weight: 500;
 }

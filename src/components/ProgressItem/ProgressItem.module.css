@@ -1,5 +1,68 @@
 .container {
   display: flex;
+  gap: 16px;
+
+  height: 580px;
+  margin: 16px 0;
+}
+
+.bar {
+  position: relative;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 16px;
+  padding-top: 8px;
+
+  flex-shrink: 0;
+}
+.bar__circle {
+  position: absolute;
+  top: 8px;
+  
+  display: block;
+  width: 8px;
+  height: 8px;
+
+  background-color: rgb(73, 86, 227);
+  border: 2px solid rgb(255, 255, 255);
+  outline: 2px solid rgb(73, 86, 227);;
+  border-radius: 50%;
+}
+.bar::before {
+  content: '';
+
+  position: absolute;
+  top: 28px;
+
+  display: block;
+  width: 0;
+  height: calc(100% - 12px);
+
+  border-left: 2px dashed rgb(225, 227, 237);
+}
+.bar::after {
+  content: '';
+
+  position: absolute;
+  top: 28px;
+
+  display: block;
+  width: 2px;
+  height: 0;
+
+  background-color: rgb(73, 86, 227);
+
+  transition: height var(--transition);
+}
+.bar--active::after {
+  height: calc(100% - 12px);
+}
+
+.content {
+  display: flex;
   flex-direction: column;
   gap: 12px;
 }
@@ -7,4 +70,6 @@
 .image {
   display: block;
   width: 100%;
+
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 0px 20px 0px;
 }

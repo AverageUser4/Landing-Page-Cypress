@@ -5,7 +5,6 @@ import FancyHeading from '../FancyHeading/FancyHeading';
 import GridList from '../GridList/GridList';
 import Button from '../Button/Button';
 import HeaderSubmenuSection from '../HeaderSubmenuSection/HeaderSubmenuSection';
-import Heading from '../Heading/Heading';
 import HeaderSubmenuSiblings from '../HeaderSubmenuSiblings/HeaderSubmenuSiblings';
 
 import getData from '../../misc/HeaderSubmenuElementsData';
@@ -29,7 +28,7 @@ function HeaderSubmenuCommunity({ isMobileView }) {
 
   const firstList = (
     <GridList columnsCount={1}>
-      <Heading>Topics</Heading>
+      <h4 className="head head--d">Topics</h4>
 
       <Button type={types.link} href="https://cypress.io/blog/tag/product-updates/">
         Releases

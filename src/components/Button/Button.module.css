@@ -155,7 +155,6 @@
 }
 
 .button--type-link-a {
-  /* color: rgb(144, 149, 173); */
   color: rgb(90, 95, 122);
   transition: color var(--transition);
 }
@@ -171,6 +170,10 @@
   font-size: 16px;
   color: rgb(73, 86, 227);
   gap: 0.33em;
+}
+
+.button--type-link-c {
+  color: rgb(0, 89, 93);
 }
 
 .button--type-icon {

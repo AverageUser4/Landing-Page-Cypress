@@ -1,16 +1,18 @@
 import React from 'react';
-import css from './Page.module.css';
+import css from './LandingPage.module.css';
 
-import Header from '../Header/Header';
-import TestAutomateAccelerate from '../TestAutomateAccelerate/TestAutomateAccelerate';
+import Header from '../../components/Header/Header';
+import TestAutomateAccelerate from '../../components/TestAutomateAccelerate/TestAutomateAccelerate';
+import WriteRunDebug from '../../components/WriteRunDebug/WriteRunDebug';
+import Footer from '../../components/Footer/Footer';
 
 import { ReactComponent as WaveSVG } from '../../assets/images/wave.svg';
-import WriteRunDebug from '../WriteRunDebug/WriteRunDebug';
 
-function Page() {
+function LandingPage() {
   return (
     <div className={css['container']}>
       <Header isBackgroundTransparentWhenOnTop={true}/>
+
       <main>
         <TestAutomateAccelerate/>
 
@@ -20,8 +22,10 @@ function Page() {
 
         <WriteRunDebug/>
       </main>
+
+      <Footer/>
     </div>
   );
 }
 
-export default Page;
+export default LandingPage;

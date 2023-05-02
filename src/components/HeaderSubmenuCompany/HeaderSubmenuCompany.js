@@ -3,24 +3,14 @@ import PropTypes from 'prop-types';
 
 import FancyHeading from '../FancyHeading/FancyHeading';
 import GridList from '../GridList/GridList';
-import Button from '../Button/Button';
 import HeaderSubmenuSection from '../HeaderSubmenuSection/HeaderSubmenuSection';
-import Heading from '../Heading/Heading';
 import HeaderSubmenuSiblings from '../HeaderSubmenuSiblings/HeaderSubmenuSiblings';
 
-import getData from '../../misc/HeaderSubmenuElementsData';
-
 import { ReactComponent as BuildingsSVG } from './assets/buildings.svg';
-import { ReactComponent as DiscordSVG } from './assets/discord.svg';
-import { ReactComponent as FacebookSVG } from './assets/facebook.svg';
-import { ReactComponent as GithubSVG } from './assets/github.svg';
-import { ReactComponent as LinkedInSVG } from './assets/linked-in.svg';
-import { ReactComponent as TwitterSVG } from './assets/twitter.svg';
-import { ReactComponent as YoutubeSVG } from './assets/youtube.svg';
+import SocialsList from '../SocialsList/SocialsList';
+import CompanyList from '../CompanyList/CompanyList';
 
 function HeaderSubmenuCompany({ isMobileView }) {
-  const { types, classNames } = getData(isMobileView);
-
   const heading = (
     <FancyHeading
       Icon={BuildingsSVG}
@@ -31,59 +21,14 @@ function HeaderSubmenuCompany({ isMobileView }) {
   );
 
   const firstList = (
-    <GridList columnsCount={1}>
-      <Heading>Company</Heading>
-
-      <Button type={types.link} href="https://www.cypress.io/careers">
-        Working at Cypress
-      </Button>
-
-      <Button type={types.link} href="https://www.cypress.io/careers#open-roles">
-        Open positions
-      </Button>
-
-      <Button type={types.link} href="https://www.cypress.io/support">
-        Support
-      </Button>
-
-      <Button type={types.link} href="https://www.cypress.io/press-kit">
-        Press & media
-      </Button>
-    </GridList>
+    <CompanyList/>
   );
 
   const secondList = (
-    <GridList columnsCount={isMobileView ? 2 : 1}>
-      <Button className="icon-container" type={types.linkBold} href="https://github.com/cypress-io/cypress">
-        <GithubSVG className={classNames.svg}/>
-        GitHub
-      </Button>
-
-      <Button className="icon-container" type={types.linkBold} href="https://www.youtube.com/c/Cypressio">
-        <YoutubeSVG className={classNames.svg}/>
-        YouTube
-      </Button>
-
-      <Button className="icon-container" type={types.linkBold} href="https://www.linkedin.com/company/cypress.io">
-        <LinkedInSVG className={classNames.svg}/>
-        LinkedIn
-      </Button>
-
-      <Button className="icon-container" type={types.linkBold} href="https://twitter.com/Cypress_io">
-        <TwitterSVG className={classNames.svg}/>
-        Twitter
-      </Button>
-
-      <Button className="icon-container" type={types.linkBold} href="https://facebook.com/cypressio">
-        <FacebookSVG className={classNames.svg}/>
-        Facebook
-      </Button>
-
-      <Button className="icon-container" type={types.linkBold} href="https://on.cypress.io/chat">
-        <DiscordSVG className={classNames.svg}/>
-        Discord
-      </Button>
-    </GridList>
+    <SocialsList 
+      columnsCount={isMobileView ? 2 : 1}
+      isMobileView={isMobileView}
+    />
   );
   
   if(isMobileView) {

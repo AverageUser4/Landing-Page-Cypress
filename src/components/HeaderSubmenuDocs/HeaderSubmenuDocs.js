@@ -5,9 +5,8 @@ import FancyHeading from '../FancyHeading/FancyHeading';
 import GridList from '../GridList/GridList';
 import Button from '../Button/Button';
 import HeaderSubmenuSection from '../HeaderSubmenuSection/HeaderSubmenuSection';
-import Heading from '../Heading/Heading';
 import HeaderSubmenuSiblings from '../HeaderSubmenuSiblings/HeaderSubmenuSiblings';
-
+import GettingStartedList from '../GettingStartedList/GettingStartedList';
 import getData from '../../misc/HeaderSubmenuElementsData';
 
 import { ReactComponent as BookSVG } from './assets/book.svg';
@@ -29,26 +28,12 @@ function HeaderSubmenuDocs({ isMobileView }) {
   );
 
   const firstList = (
-    <GridList columnsCount={1}>
-      <Heading>Getting started</Heading>
-    
-      <Button type={types.link} href="https://on.cypress.io/installing-cypress">
-        Installing Cypress
-      </Button>
-
-      <Button type={types.link} href="https://on.cypress.io/writing-your-first-test">
-        Writing your first test
-      </Button>
-
-      <Button type={types.link} href="https://on.cypress.io/testing-your-app">
-        Testing your app
-      </Button>
-    </GridList>
+    <GettingStartedList/>
   );
 
   const secondList = (
     <GridList columnsCount={1}>
-      <Heading>References</Heading>
+      <h4 className="head head--d">References</h4>
     
       <Button type={types.link} href="https://docs.cypress.io/api/commands/and">
         API
