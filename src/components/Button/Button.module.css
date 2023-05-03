@@ -149,6 +149,7 @@
   color: rgb(0, 119, 128);
   font-size: 14px;
   border: none;
+  line-height: 1;
 }
 .button--type-link:hover:not(:focus-visible) {
   outline-color: transparent;
@@ -190,4 +191,8 @@
 }
 .button--type-icon:hover:not(:focus-visible) {
   outline-color: transparent;
+}
+
+.button--type-flex {
+  display: flex;
 }

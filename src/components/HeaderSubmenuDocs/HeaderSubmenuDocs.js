@@ -6,7 +6,7 @@ import GridList from '../GridList/GridList';
 import Button from '../Button/Button';
 import HeaderSubmenuSection from '../HeaderSubmenuSection/HeaderSubmenuSection';
 import HeaderSubmenuSiblings from '../HeaderSubmenuSiblings/HeaderSubmenuSiblings';
-import GettingStartedList from '../GettingStartedList/GettingStartedList';
+import LinksListGettingStarted from '../LinksListGettingStarted/LinksListGettingStarted';
 import getData from '../../misc/HeaderSubmenuElementsData';
 
 import { ReactComponent as BookSVG } from './assets/book.svg';
@@ -28,7 +28,7 @@ function HeaderSubmenuDocs({ isMobileView }) {
   );
 
   const firstList = (
-    <GettingStartedList/>
+    <LinksListGettingStarted/>
   );
 
   const secondList = (

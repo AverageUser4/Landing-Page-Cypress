@@ -7,8 +7,6 @@ function ViewportProvider({ children }) {
   const [viewportWidth, setViewportWidth] = useState(0);
   const isMobileView = viewportWidth < 640;
 
-  console.log(isMobileView)
-
   useEffect(() => {
     function onResize() {
       setViewportWidth(window.innerWidth);

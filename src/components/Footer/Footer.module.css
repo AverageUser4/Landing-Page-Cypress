@@ -1,5 +1,5 @@
 .container {
-  --offset: clamp(50px, 10vw, 300px);
+  --offset: clamp(50px, 8vw, 300px);
 
   position: relative;
   
@@ -16,5 +16,32 @@
 .content {
   position: relative;
 
-  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 0 32px 32px;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.middle--desktop {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.middle > :first-child {
+  flex-grow: 1;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding-top: 24px;
+
+  border-top: 1px solid rgb(134, 221, 185);
 }

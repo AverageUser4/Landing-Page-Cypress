@@ -8,7 +8,7 @@ import HeaderSubmenuSiblings from '../HeaderSubmenuSiblings/HeaderSubmenuSibling
 
 import { ReactComponent as BuildingsSVG } from './assets/buildings.svg';
 import SocialsList from '../SocialsList/SocialsList';
-import CompanyList from '../CompanyList/CompanyList';
+import LinksListCompany from '../LinksListCompany/LinksListCompany';
 
 function HeaderSubmenuCompany({ isMobileView }) {
   const heading = (
@@ -21,7 +21,7 @@ function HeaderSubmenuCompany({ isMobileView }) {
   );
 
   const firstList = (
-    <CompanyList/>
+    <LinksListCompany/>
   );
 
   const secondList = (

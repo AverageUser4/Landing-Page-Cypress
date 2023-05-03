@@ -7,7 +7,7 @@ export default function getListData({ type, isMobileView }) {
     heading: `head head--d ${type === 'b' && 'head--color-a head--bit-bold'}`
   };
   const types = {
-    link: type === 'a' ? basicTypes.link : 'link link-c'
+    link: type === 'a' ? basicTypes.link : 'link link-c flex'
   };
 
   return { classNames, types };
