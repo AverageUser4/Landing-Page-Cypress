@@ -6,3 +6,6 @@
 .grad-text--a {
   background-image: linear-gradient(to right, rgb(73, 86, 227), rgb(127, 67, 201));
 }
+.grad-text--b {
+  background-image: linear-gradient(to top, rgb(31, 169, 113), rgb(0, 151, 168));
+}

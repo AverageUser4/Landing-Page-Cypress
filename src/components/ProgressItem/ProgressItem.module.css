@@ -1,9 +1,19 @@
 .container {
+  position: relative;
+  
   display: flex;
   gap: 16px;
 
   height: 580px;
   margin: 16px 0;
+}
+.container--special {
+  align-items: center;
+  height: 460px;
+}
+.container--break {
+  align-items: center;
+  height: 300px;
 }
 
 .bar {
@@ -14,15 +24,65 @@
   align-items: center;
   
   width: 16px;
+  height: calc(100% - 12px);
   padding-top: 8px;
 
   flex-shrink: 0;
 }
-.bar__circle {
+.fog {
   position: absolute;
-  top: 8px;
+  top: 30%;
+  z-index: 2;
   
   display: block;
+  width: 100%;
+  height: calc(70% + 16px);
+
+  box-shadow: 0 -20px 15px rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+}
+.bar::before,
+.bar::after {
+  content: '';
+
+  position: absolute;
+  top: 28px;
+  z-index: 1;
+
+  display: block;
+}
+.bar::before {
+  width: 0;
+  height: calc(100% - 12px);
+
+  border-left: 2px dashed rgb(225, 227, 237);
+}
+.bar::after {
+  width: 2px;
+  height: 0;
+
+  background-color: rgb(73, 86, 227);
+
+  transition: height var(--transition);
+}
+.container--active .bar::after {
+  height: calc(100% - 12px);
+}
+
+.circle {
+  position: absolute;
+  top: 7px;
+  
+  display: block;
+  width: 4px;
+  height: 4px;
+
+  border: 2px solid rgb(225, 227, 237);
+  border-radius: 50%;
+
+  transition: var(--transition);
+}
+.container--active .circle {
   width: 8px;
   height: 8px;
 
@@ -31,45 +91,62 @@
   outline: 2px solid rgb(73, 86, 227);;
   border-radius: 50%;
 }
-.bar::before {
-  content: '';
-
-  position: absolute;
-  top: 28px;
-
-  display: block;
-  width: 0;
-  height: calc(100% - 12px);
-
-  border-left: 2px dashed rgb(225, 227, 237);
-}
-.bar::after {
-  content: '';
-
-  position: absolute;
-  top: 28px;
-
-  display: block;
-  width: 2px;
-  height: 0;
-
+.container--active.container--break .circle {
+  width: 4px;
+  height: 4px;
+  
   background-color: rgb(73, 86, 227);
-
-  transition: height var(--transition);
-}
-.bar--active::after {
-  height: calc(100% - 12px);
+  border-color: rgb(73, 86, 227);
+  outline: none;
 }
 
 .content {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 12px;
+}
+.container--special .content {
+  position: relative;
+  z-index: 1;
+
+  padding: 48px 32px;
+  max-width: 800px;
+  
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+}
+.icon {
+  display: block;
+  width: 32px;
 }
 
 .image {
   display: block;
-  width: 100%;
+  width: clamp(100px, 100%, 700px);
 
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 0px 20px 0px;
+}
+
+.line-container {
+  position: absolute;
+  top: 30px;
+  left: 6px;
+}
+
+.line {
+  color: rgb(225, 227, 237);
+}
+
+.line-container .circle {
+  top: 136px;
+  left: 36px;
 }

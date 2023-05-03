@@ -1,0 +1,4 @@
+<svg width="43" height="420" viewBox="0 0 43 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 1.5 0 C 1.5 63 42 57.24 42 128 M 42 130 L 42 293 C 42 363 1.5 358 1.5 420" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-dasharray="4 4"></path>
+  <path d="M 1.5 0 C 1.5 63 42 57.24 42 128" stroke="rgb(73, 86, 227)" stroke-width="2" stroke-linejoin="round" className="super-stroke" stroke-dasharray="0 1000"></path>
+</svg>

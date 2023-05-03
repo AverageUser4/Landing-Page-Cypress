@@ -4,12 +4,18 @@
   background-color: rgb(255, 255, 255);
 }
 
-.top {
+.heading {
   display: flex;
   flex-direction: column;
   gap: 8px;
 
   max-width: 1000px;
+  margin: 0 auto;
+}
+
+.heading__icon {
+  color: rgb(90, 95, 122);
+  display: block;
   margin: 0 auto;
 }
 
