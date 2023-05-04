@@ -1,0 +1,8 @@
+.container {
+  /* background-image: url(./assets/big-lines.svg); */
+  background-position: top center;
+
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 500px;
+}

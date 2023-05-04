@@ -2,6 +2,7 @@ import React from 'react';
 import css from './WriteRunDebug.module.css';
 
 import ProgressItem from '../ProgressItem/ProgressItem';
+import BigLines from '../BigLines/BigLines';
 
 import { ReactComponent as LaptopSVG } from './assets/laptop.svg';
 import { ReactComponent as ClockSVG } from './assets/clock.svg';
@@ -23,7 +24,7 @@ import int_6 from './assets/int-6.svg';
 function WriteRunDebug() {
   return (
     <div className={css['container']}>
-      <div className="max-width">
+      <div className={`max-width ${css['inner-container']}`}>
         <div className={css['heading']}>
           <LaptopSVG className={css['heading__icon']}/>
           <p className="para para--b para--medium">Introducing the Cypress App</p>
@@ -96,12 +97,9 @@ function WriteRunDebug() {
             src={integrateSrc}
           />
         </div>
-
-        <div className={css['heading']}>
-          <h2 className="head head--b head--medium">Loved by <span className="grad-text grad-text--b">OSS</span>, trusted by <span className="grad-text grad-text--a">Enterprise</span></h2>
-          <p className="para para--b para--big para--weight-300">Cypress is proud to support developers all around the world by making it easier to build and test modern applications.</p>
-        </div>
       </div>
+
+      <BigLines/>
     </div>
   );
 }

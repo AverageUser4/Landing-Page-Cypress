@@ -1,7 +1,11 @@
 .container {
-  padding: clamp(32px, 10vw, 124px) 16px;
+  padding: clamp(32px, 10vw, 124px) 0;
   
   background-color: rgb(255, 255, 255);
+}
+
+.inner-container {
+  padding: 0 16px;
 }
 
 .heading {
