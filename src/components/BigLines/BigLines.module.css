@@ -1,8 +1,32 @@
 .container {
-  /* background-image: url(./assets/big-lines.svg); */
-  background-position: top center;
+  background-image: 
+    url(./assets/0.png),
+    url(./assets/1.png),
+    url(./assets/2.png),
+    url(./assets/2.png),
+    url(./assets/1.png),
+    url(./assets/big-lines.svg);
+  background-position: 
+    calc(1353px - (4072px - 100%) / 2) 428px,
+    calc(2554px - (4072px - 100%) / 2) 364px,
+    calc(2745px - (4072px - 100%) / 2) 1021px,
+    calc(1367px - (4072px - 100%) / 2) 701px,
+    calc(1290px - (4072px - 100%) / 2) 1211px,
+    top center;
+  background-size: 
+    32px,
+    32px,
+    32px,
+    32px,
+    32px,
+    auto;
+  background-repeat: no-repeat;
 
   width: 100%;
-  padding-top: 0;
-  padding-bottom: 500px;
+  padding-top: 450px;
+}
+
+.text {
+  max-width: 960px;
+  margin: 0 auto;
 }
