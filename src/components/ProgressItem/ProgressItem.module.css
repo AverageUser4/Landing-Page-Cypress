@@ -15,6 +15,12 @@
   align-items: center;
   height: 300px;
 }
+.container--desktop {
+  display: grid;
+  grid-template-columns: 48% 4% 48%;
+  gap: 0;
+  height: 320px;
+}
 
 .bar {
   position: relative;
@@ -28,18 +34,6 @@
   padding-top: 8px;
 
   flex-shrink: 0;
-}
-.fog {
-  position: absolute;
-  top: 30%;
-  z-index: 2;
-  
-  display: block;
-  width: 100%;
-  height: calc(70% + 16px);
-
-  box-shadow: 0 -20px 15px rgb(255, 255, 255);
-  background-color: rgb(255, 255, 255);
 }
 .bar::before,
 .bar::after {
@@ -67,6 +61,23 @@
 }
 .container--active .bar::after {
   height: calc(100% - 12px);
+}
+.container--desktop .bar {
+  width: auto;
+  left: 1px;
+}
+
+.fog {
+  position: absolute;
+  top: 30%;
+  z-index: 2;
+  
+  display: block;
+  width: 100%;
+  height: calc(70% + 16px);
+
+  box-shadow: 0 -20px 15px rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
 }
 
 .circle {
@@ -116,6 +127,15 @@
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
   background-color: rgba(255, 255, 255, 0.8);
 }
+.container--desktop .content {
+  padding-left: 32px;
+}
+.container--desktop.container--special .content {
+  padding: 0 64px;
+  
+  background-color: transparent;
+  box-shadow: none;
+}
 
 .icon-container {
   display: flex;
@@ -135,18 +155,43 @@
 
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 0px 20px 0px;
 }
+.container--desktop .image {
+  width: clamp(100px, calc(100% - 32px), 540px);
+}
 
 .line-container {
   position: absolute;
   top: 30px;
-  left: 6px;
+  left: calc(50% - 2px);
+}
+.line-container::before {
+  content: '';
+
+  position: absolute;
+
+  display: block;
+  width: 1px;
+  height: 10px;
+
+  background-color: rgb(255, 255, 255);
 }
 
 .line {
   color: rgb(225, 227, 237);
 }
 
-.line-container .circle {
-  top: 136px;
+.circle-container {
+  position: absolute;
+  top: 130px;
+  left: 38px;
+  
+  padding: 8px 0;
+
+  background-color: rgb(255, 255, 255);
+}
+.container--active .circle-container {
   left: 36px;
+}
+.line-container .circle {
+  position: static;
 }

@@ -3,6 +3,7 @@ import css from './WriteRunDebug.module.css';
 
 import ProgressItem from '../ProgressItem/ProgressItem';
 import BigLines from '../BigLines/BigLines';
+import Progress from '../Progress/Progress';
 
 import { ReactComponent as LaptopSVG } from './assets/laptop.svg';
 import { ReactComponent as ClockSVG } from './assets/clock.svg';
@@ -31,7 +32,7 @@ function WriteRunDebug() {
           <h2 className="head head--b head--medium">Write, run, and debug <span className="grad-text grad-text--a">like a pro</span></h2>
         </div>
 
-        <div style={{ padding: 'clamp(32px, 5vw, 64px) 0' }}>
+        <Progress>
           <ProgressItem
             heading="Test modern apps directly in the browser"
             text="Watch your end-to-end and component tests run in real-time as you develop your applications. Cypress’s simple, yet powerful API runs as fast as your browser can render content."
@@ -96,7 +97,7 @@ function WriteRunDebug() {
             href="https://www.cypress.io/cloud#integrated_workflows"
             src={integrateSrc}
           />
-        </div>
+        </Progress>
       </div>
 
       <BigLines/>
