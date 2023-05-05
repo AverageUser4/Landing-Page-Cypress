@@ -9,13 +9,12 @@ import { ReactComponent as LinesSVG } from './assets/lines.svg';
 import { useScrollContext } from "../../context/Scroll";
 import { useViewportContext } from "../../context/Viewport";
 
-function ProgressItem({ heading, text, href, src, type = 'normal', children }) {
+function ProgressItem({ heading, text, href, src, type = 'normal', children, isDesktopView }) {
   const { viewportWidth } = useViewportContext();
   const [isActive, setIsActive] = useState(false);
+  const [solidBarHeight, setSolidBarHeight] = useState(0);
   const containerRef = useRef();
   const { scrollY } = useScrollContext();
-  const isDesktopView = viewportWidth >= 1000;
-
   const image = (
     typeof src === 'string' ? <img className={css['image']} src={src}/> : <div/>
   );
@@ -25,12 +24,16 @@ function ProgressItem({ heading, text, href, src, type = 'normal', children }) {
       return;
     }
 
-    if(containerRef.current.getBoundingClientRect().y <= 350) {
+    const containerY = containerRef.current.getBoundingClientRect().y;
+    
+    if(containerY <= 350) {
       setIsActive(true);
+      setSolidBarHeight(330 - containerY);
     } else {
       setIsActive(false);
+      setSolidBarHeight(0);
     }
-  }, [scrollY]);
+  }, [scrollY, viewportWidth]);
 
   return (
     <div 
@@ -48,6 +51,12 @@ function ProgressItem({ heading, text, href, src, type = 'normal', children }) {
         className={`${css['bar']}`}
       >
         <div className={css['circle']}/>
+        <div 
+          className={css['solid-bar']}
+          style={
+            isDesktopView ? { height: solidBarHeight, transition: 'none' } : {}
+          }
+        />
         {type === 'break' && <div className={css['fog']}/>}
         {
           type === 'special' && 
@@ -65,23 +74,25 @@ function ProgressItem({ heading, text, href, src, type = 'normal', children }) {
         }
       </div>
       
-      {
-        children ?
-          children
-        :
-          <article className={css['content']}>
-            {
-              Array.isArray(src) && 
-                <div className={css['icon-container']}>
-                  {src.map(src => <img key={src} className={css['icon']} src={src}/>)}
-                </div>
-            }
-            <h3 className={`head head--c ${type === 'special' && 'head--color-b'}`}>{heading}</h3>
-            <p className="para para--a">{text}</p>
-            {href && <Button type="link link-b" href={href}>Learn more <FullArrowSVG/></Button>}
-            {!isDesktopView && image}
-          </article>
-      }
+      <div className={css['content-container']}>
+        {
+          children ?
+            children
+          :
+            <article className={css['content']}>
+              {
+                Array.isArray(src) && 
+                  <div className={css['icon-container']}>
+                    {src.map(src => <img key={src} className={css['icon']} src={src}/>)}
+                  </div>
+              }
+              <h3 className={`head head--c ${type === 'special' && 'head--color-b'}`}>{heading}</h3>
+              <p className="para para--a">{text}</p>
+              {href && <Button type="link link-b" href={href}>Learn more <FullArrowSVG/></Button>}
+              {!isDesktopView && image}
+            </article>
+        }
+      </div>
     </div>
   );
 }
@@ -96,6 +107,7 @@ ProgressItem.propTypes = {
   ]),
   type: PropTypes.oneOf(['normal', 'special', 'break']),
   children: PropTypes.node,
+  isDesktopView: PropTypes.bool.isRequired,
 };
 
 export default ProgressItem;

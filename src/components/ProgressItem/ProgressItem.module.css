@@ -36,9 +36,7 @@
   flex-shrink: 0;
 }
 .bar::before,
-.bar::after {
-  content: '';
-
+.solid-bar {
   position: absolute;
   top: 28px;
   z-index: 1;
@@ -46,25 +44,28 @@
   display: block;
 }
 .bar::before {
+  content: '';
+
   width: 0;
   height: calc(100% - 12px);
 
   border-left: 2px dashed rgb(225, 227, 237);
 }
-.bar::after {
+.container--desktop .bar {
+  width: auto;
+  left: 1px;
+}
+.solid-bar {
   width: 2px;
   height: 0;
+  max-height: calc(100% - 12px);
 
   background-color: rgb(73, 86, 227);
 
   transition: height var(--transition);
 }
-.container--active .bar::after {
+.container--active .solid-bar {
   height: calc(100% - 12px);
-}
-.container--desktop .bar {
-  width: auto;
-  left: 1px;
 }
 
 .fog {
@@ -78,6 +79,10 @@
 
   box-shadow: 0 -20px 15px rgb(255, 255, 255);
   background-color: rgb(255, 255, 255);
+}
+.container--desktop .fog {
+  height: calc(60%);
+  box-shadow: 0 -20px 15px rgb(255, 255, 255), 0 20px 15px rgb(255, 255, 255);
 }
 
 .circle {
@@ -109,6 +114,15 @@
   background-color: rgb(73, 86, 227);
   border-color: rgb(73, 86, 227);
   outline: none;
+}
+
+.container--desktop.container--break .content-container {
+  position: absolute;
+  left: 0;
+  z-index: 2;
+
+  width: 100%;
+  margin-bottom: -110px;
 }
 
 .content {

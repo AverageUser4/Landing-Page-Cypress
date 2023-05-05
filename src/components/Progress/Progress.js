@@ -4,11 +4,15 @@ import css from './Progress.module.css';
 
 import avatarSrc from './assets/avatar.png';
 import { useScrollContext } from "../../context/Scroll";
+import { useViewportContext } from "../../context/Viewport";
 
-function Progress({ children }) {
+function Progress({ render }) {
   const { scrollY } = useScrollContext();
-  const containerRef = useRef();
+  const { viewportWidth } = useViewportContext();
   const [isAvatarReached, setIsAvatarReached] = useState(false);
+  const containerRef = useRef();
+  const avatarRef = useRef();
+  const isDesktopView = viewportWidth >= 1000;
 
   useEffect(() => {
     if(!containerRef.current) {
@@ -23,27 +27,31 @@ function Progress({ children }) {
       setIsAvatarReached(false);
     }
 
-  }, [scrollY]);
+  }, [scrollY, viewportWidth]);
 
   return (
     <div 
       className={css['container']}
       ref={containerRef}
     >
-      {children}
-      <img 
-        className={`
-          ${css['avatar']}
-          ${isAvatarReached && css['avatar--fixed']}
-        `}
-        src={avatarSrc}
-      />
+      {render({ isDesktopView })}
+      {
+        isDesktopView &&
+          <img 
+            className={`
+              ${css['avatar']}
+              ${isAvatarReached && css['avatar--fixed']}
+            `}
+            src={avatarSrc}
+            ref={avatarRef}
+          />
+      }
     </div>
   );
 }
 
 Progress.propTypes = {
-  children: PropTypes.node.isRequired,
+  render: PropTypes.func.isRequired,
 };
 
 export default Progress;

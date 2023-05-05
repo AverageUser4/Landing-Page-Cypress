@@ -1,7 +1,7 @@
 .container {
   position: relative;
 
-  padding: clamp(32px, 5vw, 64px) 0;
+  padding: clamp(32px, 5vw, 64px) 0 0;
 
   /* background-color: red; */
 }
@@ -9,7 +9,7 @@
 .avatar {
   position: absolute;
   top: 72px;
-  left: calc(50% - 12px);
+  left: calc(50% - 14px);
   z-index: 1;
 
   display: block;
