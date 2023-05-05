@@ -35,4 +35,13 @@
     max-width: var(--max-width);
     margin: 0 auto;
   }
+
+  .cool-siblings {
+    display: flex;
+    justify-content: space-around;
+    margin: 24px 0 0;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
 }

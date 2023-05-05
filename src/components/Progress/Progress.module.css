@@ -19,7 +19,7 @@
   border-radius: 50%;
   outline: 2px solid rgb(73, 86, 227);
 
-  transition: transform 100ms;
+  transition: transform 300ms;
 }
 .avatar--fixed {
   position: fixed;
@@ -30,4 +30,7 @@
   position: absolute;
   top: auto;
   bottom: -10px;
+}
+.avatar--hidden {
+  transform: scale(0);
 }

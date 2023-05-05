@@ -29,6 +29,10 @@
   font-size: 18px;
 }
 
+.para--small {
+  font-size: clamp(16px, 2vw, 18px);
+}
+
 .para--big {
   font-size: clamp(18px, 2.5vw, 24px);
 }
@@ -39,4 +43,8 @@
 
 .para--centered {
   text-align: center;
+}
+
+.para--text-align-left {
+  text-align: left;
 }

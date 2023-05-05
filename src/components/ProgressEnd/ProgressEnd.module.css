@@ -23,11 +23,19 @@
 
   pointer-events: none;
 }
+.container--odd .background-container svg {
+  left: calc((4072px - 100%) / -2 + 1px);
+}
 
 .content {
+  padding: 64px 16px;
+}
+
+.container--desktop .content {
   position: absolute;
   top: 150px;
 
   max-width: 960px;
   margin: 0 auto;
+  padding: 0;
 }

@@ -9,13 +9,15 @@ import { ReactComponent as LinesSVG } from './assets/lines.svg';
 import { useScrollContext } from "../../context/Scroll";
 import { useViewportContext } from "../../context/Viewport";
 
-function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal', children, isDesktopView }) {
+function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal', children, isDesktopView, setIsAvatarWithinBreak }) {
   const { viewportWidth } = useViewportContext();
   const [isActive, setIsActive] = useState(false);
   const [isAvatarWithin, setIsAvatarWithin] = useState(false);
   const [solidBarHeight, setSolidBarHeight] = useState(0);
   const containerRef = useRef();
   const { scrollY } = useScrollContext();
+
+  type === 'break' && console.log('hi')
 
   useEffect(() => {
     if(!containerRef.current) {
@@ -26,8 +28,10 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
 
     if(containerY <= 350 && containerY > 15) {
       setIsAvatarWithin(true);
+      type === 'break' && setIsAvatarWithinBreak(true);
     } else {
       setIsAvatarWithin(false);
+      type === 'break' && setIsAvatarWithinBreak(false);
     }
 
     if(containerY <= 350) {
@@ -37,7 +41,7 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
       setIsActive(false);
       setSolidBarHeight(0);
     }
-  }, [scrollY, viewportWidth]);
+  }, [scrollY, viewportWidth, type, setIsAvatarWithinBreak]);
 
   return (
     <div 
@@ -63,7 +67,7 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
                   src={src}
                 /> 
             }
-            {(isAvatarWithin || isActive || type === 'break') && <div/>}
+            {<div/>}
           </>
       }
       
@@ -125,6 +129,7 @@ ProgressItem.propTypes = {
   type: PropTypes.oneOf(['normal', 'special', 'break', 'first', 'last']),
   children: PropTypes.node,
   isDesktopView: PropTypes.bool.isRequired,
+  setIsAvatarWithinBreak: PropTypes.func,
 };
 
 export default ProgressItem;
