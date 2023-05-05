@@ -35,11 +35,4 @@
     max-width: var(--max-width);
     margin: 0 auto;
   }
-
-  .super-stroke {
-    transition: stroke-dasharray var(--transition);
-  }
-  .super-stroke-container--active .super-stroke {
-    stroke-dasharray: 1000;
-  }
 }

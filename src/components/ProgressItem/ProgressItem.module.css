@@ -21,6 +21,19 @@
   gap: 0;
   height: 320px;
 }
+.container--desktop.container--first::before {
+  content: '';
+
+  position: absolute;
+  top: -63px;
+  left: calc(50% - 1px);
+  
+  display: block;
+  width: 2px;
+  height: 60px;
+  
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(73, 86, 227));
+}
 
 .bar {
   position: relative;
@@ -63,6 +76,8 @@
   background-color: rgb(73, 86, 227);
 
   transition: height var(--transition);
+
+  z-index: 2;
 }
 .container--active .solid-bar {
   height: calc(100% - 12px);
@@ -115,6 +130,9 @@
   border-color: rgb(73, 86, 227);
   outline: none;
 }
+.container--desktop .circle {
+  transition: 100ms ease-in-out;
+}
 
 .container--desktop.container--break .content-container {
   position: absolute;
@@ -165,18 +183,38 @@
 
 .image {
   display: block;
-  width: clamp(100px, 100%, 700px);
+  max-height: 320px;
 
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 0px 20px 0px;
+
+  transition: opacity 300ms, transform 300ms;
 }
-.container--desktop .image {
-  width: clamp(100px, calc(100% - 32px), 540px);
+.image--hidden {
+  opacity: 0;
+  transform: scale(0.5) translateY(50px);
+}
+.image--fixed {
+  position: fixed;
+  top: 350px;
+  z-index: 1;
+
+  /* should find better fix */
+  pointer-events: none;
+}
+.container--special .image--fixed {
+  position: absolute;
+  top: 0;
+}
+.container--last .image--fixed {
+  position: absolute;
+  top: 0;
 }
 
 .line-container {
   position: absolute;
   top: 30px;
   left: calc(50% - 2px);
+  z-index: 1;
 }
 .line-container::before {
   content: '';
@@ -208,4 +246,14 @@
 }
 .line-container .circle {
   position: static;
+}
+
+:global(.super-stroke) {
+  transition: var(--transition);
+}
+.container--desktop :global(.super-stroke) {
+  transition: 100ms linear;
+}
+.container--active :global(.super-stroke) {
+  stroke-dasharray: 1000;
 }

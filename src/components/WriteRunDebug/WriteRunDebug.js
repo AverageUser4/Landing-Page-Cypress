@@ -2,7 +2,6 @@ import React from 'react';
 import css from './WriteRunDebug.module.css';
 
 import ProgressItem from '../ProgressItem/ProgressItem';
-import BigLines from '../BigLines/BigLines';
 import Progress from '../Progress/Progress';
 
 import { ReactComponent as LaptopSVG } from './assets/laptop.svg';
@@ -15,6 +14,7 @@ import optimizeSrc from './assets/optimize.png';
 import reviewSrc from './assets/review.svg';
 import testSrc from './assets/test.png';
 import writeSrc from './assets/write.png';
+import specialSrc from './assets/special.png';
 import int_1 from './assets/int-1.svg';
 import int_2 from './assets/int-2.svg';
 import int_3 from './assets/int-3.svg';
@@ -31,90 +31,91 @@ function WriteRunDebug() {
           <p className="para para--b para--medium">Introducing the Cypress App</p>
           <h2 className="head head--b head--medium">Write, run, and debug <span className="grad-text grad-text--a">like a pro</span></h2>
         </div>
-
-        <Progress
-          render={(props) => (
-            <>
-              <ProgressItem
-                {...props}
-                heading="Test modern apps directly in the browser"
-                text="Watch your end-to-end and component tests run in real-time as you develop your applications. Cypress’s simple, yet powerful API runs as fast as your browser can render content."
-                href="https://www.cypress.io/app"
-                src={testSrc}
-              />
-              <ProgressItem
-                {...props}
-                heading="Write your first passing test in minutes"
-                text="Installing Cypress and writing your first passing test is a breeze. There are no servers, drivers, or other dependencies to install or configure."
-                href="https://www.cypress.io/app#delightful_experience"
-                src={writeSrc}
-              />
-              <ProgressItem
-                {...props}
-                heading="Debug failures directly in the browser"
-                text="Because Cypress runs directly in the browser, you can debug failed tests using the in-browser developer tools you already know and love."
-                href="https://www.cypress.io/app#visual_debugging"
-                src={debugSrc}
-              />
-              <ProgressItem
-                {...props}
-                heading="Eliminate flaky tests with ease"
-                text="Cypress deterministically interacts with your application the same way as your users so you can discover intermittent bugs before your users do."
-                href="https://www.cypress.io/app#flake_resistance"
-                src={eliminateSrc}
-              />
-              <ProgressItem
-                {...props}
-                heading="Integrate Cypress with any CI provider"
-                text="Easily integrate Cypress with your current CI provider. Run Cypress in CI and you will know as soon as there is a failure. We make it simple to run in CI. Use our Docker images or bring your own."
-                href="https://www.cypress.io/cloud#integrated_workflows"
-                src={[int_1, int_2, int_3, int_4, int_5, int_6]}
-                type="special"
-              />
-              <ProgressItem
-                {...props}
-                type="break"
-              >
-                <div className={css['heading']}>
-                  <ClockSVG className={css['heading__icon']}/>
-                  <p className="para para--b para--medium">Introducing Cypress Cloud</p>
-                  <h2 className="head head--b head--medium">Increase your productivity and <span className="grad-text grad-text--a">confidence</span></h2>
-                </div>
-              </ProgressItem>
-              <ProgressItem
-                {...props}
-                heading="Optimize your runs for a faster feedback loop"
-                text="Run Cypress in your existing CI pipeline and use test parallelization, load balancing, spec prioritization, and more to be as efficient as possible with your available CI resources."
-                href="https://www.cypress.io/cloud#smart_orchestration"
-                src={optimizeSrc}
-              />
-              <ProgressItem
-                {...props}
-                heading="Review and debug failures visually"
-                text="Reach new levels of visibility into why your tests failed in CI. Play back videos of your tests as they failed, read friendly stack trace errors, and never guess why another test failed."
-                href="https://www.cypress.io/cloud#visual_reviews"
-                src={reviewSrc}
-              />
-              <ProgressItem
-                {...props}
-                heading="Gain actionable insights into your test suite"
-                text="Monitor your test suite’s health with in-depth analytics. Cypress surfaces failing and flaky test result trends and config changes that affect your test suite’s performance."
-                href="https://www.cypress.io/cloud#test_analytics"
-                src={gainSrc}
-              />
-              <ProgressItem
-                {...props}
-                heading="Integrate seamlessly into your workflow"
-                text="Plug Cypress into any CI pipeline and you can manage test results as a team thanks to native integrations with Slack, GitHub, GitLab, JIRA, and more."
-                href="https://www.cypress.io/cloud#integrated_workflows"
-                src={integrateSrc}
-              />
-            </>
-          )}
-        />
       </div>
 
-      <BigLines/>
+      <Progress
+        render={(props) => (
+          <>
+            <ProgressItem
+              {...props}
+              type="first"
+              heading="Test modern apps directly in the browser"
+              text="Watch your end-to-end and component tests run in real-time as you develop your applications. Cypress’s simple, yet powerful API runs as fast as your browser can render content."
+              href="https://www.cypress.io/app"
+              src={testSrc}
+            />
+            <ProgressItem
+              {...props}
+              heading="Write your first passing test in minutes"
+              text="Installing Cypress and writing your first passing test is a breeze. There are no servers, drivers, or other dependencies to install or configure."
+              href="https://www.cypress.io/app#delightful_experience"
+              src={writeSrc}
+            />
+            <ProgressItem
+              {...props}
+              heading="Debug failures directly in the browser"
+              text="Because Cypress runs directly in the browser, you can debug failed tests using the in-browser developer tools you already know and love."
+              href="https://www.cypress.io/app#visual_debugging"
+              src={debugSrc}
+            />
+            <ProgressItem
+              {...props}
+              heading="Eliminate flaky tests with ease"
+              text="Cypress deterministically interacts with your application the same way as your users so you can discover intermittent bugs before your users do."
+              href="https://www.cypress.io/app#flake_resistance"
+              src={eliminateSrc}
+            />
+            <ProgressItem
+              {...props}
+              heading="Integrate Cypress with any CI provider"
+              text="Easily integrate Cypress with your current CI provider. Run Cypress in CI and you will know as soon as there is a failure. We make it simple to run in CI. Use our Docker images or bring your own."
+              href="https://www.cypress.io/cloud#integrated_workflows"
+              iconsSrcArray={[int_1, int_2, int_3, int_4, int_5, int_6]}
+              src={specialSrc}
+              type="special"
+            />
+            <ProgressItem
+              {...props}
+              type="break"
+            >
+              <div className={css['heading']}>
+                <ClockSVG className={css['heading__icon']}/>
+                <p className="para para--b para--medium">Introducing Cypress Cloud</p>
+                <h2 className="head head--b head--medium">Increase your productivity and <span className="grad-text grad-text--a">confidence</span></h2>
+              </div>
+            </ProgressItem>
+            <ProgressItem
+              {...props}
+              heading="Optimize your runs for a faster feedback loop"
+              text="Run Cypress in your existing CI pipeline and use test parallelization, load balancing, spec prioritization, and more to be as efficient as possible with your available CI resources."
+              href="https://www.cypress.io/cloud#smart_orchestration"
+              src={optimizeSrc}
+            />
+            <ProgressItem
+              {...props}
+              heading="Review and debug failures visually"
+              text="Reach new levels of visibility into why your tests failed in CI. Play back videos of your tests as they failed, read friendly stack trace errors, and never guess why another test failed."
+              href="https://www.cypress.io/cloud#visual_reviews"
+              src={reviewSrc}
+            />
+            <ProgressItem
+              {...props}
+              heading="Gain actionable insights into your test suite"
+              text="Monitor your test suite’s health with in-depth analytics. Cypress surfaces failing and flaky test result trends and config changes that affect your test suite’s performance."
+              href="https://www.cypress.io/cloud#test_analytics"
+              src={gainSrc}
+            />
+            <ProgressItem
+              {...props}
+              type="last"
+              heading="Integrate seamlessly into your workflow"
+              text="Plug Cypress into any CI pipeline and you can manage test results as a team thanks to native integrations with Slack, GitHub, GitLab, JIRA, and more."
+              href="https://www.cypress.io/cloud#integrated_workflows"
+              src={integrateSrc}
+            />
+          </>
+        )}
+      />
     </div>
   );
 }

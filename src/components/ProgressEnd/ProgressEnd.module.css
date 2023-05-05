@@ -1,0 +1,33 @@
+.container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 100%;
+}
+
+.background-container {
+  width: 100%;
+
+  position: relative;
+  top: -260px;
+
+  overflow: hidden;
+}
+
+.background-container svg {
+  position: relative;
+  left: calc((4072px - 100%) / -2);
+
+  pointer-events: none;
+}
+
+.content {
+  position: absolute;
+  top: 150px;
+
+  max-width: 960px;
+  margin: 0 auto;
+}

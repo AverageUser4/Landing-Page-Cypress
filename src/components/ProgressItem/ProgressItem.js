@@ -9,15 +9,13 @@ import { ReactComponent as LinesSVG } from './assets/lines.svg';
 import { useScrollContext } from "../../context/Scroll";
 import { useViewportContext } from "../../context/Viewport";
 
-function ProgressItem({ heading, text, href, src, type = 'normal', children, isDesktopView }) {
+function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal', children, isDesktopView }) {
   const { viewportWidth } = useViewportContext();
   const [isActive, setIsActive] = useState(false);
+  const [isAvatarWithin, setIsAvatarWithin] = useState(false);
   const [solidBarHeight, setSolidBarHeight] = useState(0);
   const containerRef = useRef();
   const { scrollY } = useScrollContext();
-  const image = (
-    typeof src === 'string' ? <img className={css['image']} src={src}/> : <div/>
-  );
 
   useEffect(() => {
     if(!containerRef.current) {
@@ -25,7 +23,13 @@ function ProgressItem({ heading, text, href, src, type = 'normal', children, isD
     }
 
     const containerY = containerRef.current.getBoundingClientRect().y;
-    
+
+    if(containerY <= 350 && containerY > 15) {
+      setIsAvatarWithin(true);
+    } else {
+      setIsAvatarWithin(false);
+    }
+
     if(containerY <= 350) {
       setIsActive(true);
       setSolidBarHeight(330 - containerY);
@@ -45,7 +49,23 @@ function ProgressItem({ heading, text, href, src, type = 'normal', children, isD
       `} 
       ref={containerRef}
     >
-      {isDesktopView && image}
+      {
+        isDesktopView &&
+          <>
+            {
+              typeof src === 'string' &&
+                <img 
+                  className={`
+                    ${css['image']}
+                    ${!isAvatarWithin && !(type === 'first' && !isActive) && css['image--hidden']}
+                    ${(isAvatarWithin || isActive) && css['image--fixed']}
+                  `} 
+                  src={src}
+                /> 
+            }
+            {(isAvatarWithin || isActive || type === 'break') && <div/>}
+          </>
+      }
       
       <div 
         className={`${css['bar']}`}
@@ -64,7 +84,6 @@ function ProgressItem({ heading, text, href, src, type = 'normal', children, isD
               <LinesSVG 
                 className={`
                   ${css['line']}
-                  ${isActive && 'super-stroke-container--active'}
                 `}
               />
               <div className={css['circle-container']}>
@@ -81,15 +100,15 @@ function ProgressItem({ heading, text, href, src, type = 'normal', children, isD
           :
             <article className={css['content']}>
               {
-                Array.isArray(src) && 
+                iconsSrcArray && 
                   <div className={css['icon-container']}>
-                    {src.map(src => <img key={src} className={css['icon']} src={src}/>)}
+                    {iconsSrcArray.map(src => <img key={src} className={css['icon']} src={src}/>)}
                   </div>
               }
               <h3 className={`head head--c ${type === 'special' && 'head--color-b'}`}>{heading}</h3>
               <p className="para para--a">{text}</p>
               {href && <Button type="link link-b" href={href}>Learn more <FullArrowSVG/></Button>}
-              {!isDesktopView && image}
+              {!isDesktopView && type !== 'special' && <img className={css['image']} src={src}/>}
             </article>
         }
       </div>
@@ -101,11 +120,9 @@ ProgressItem.propTypes = {
   heading: PropTypes.string,
   text: PropTypes.string,
   href: PropTypes.string,
-  src: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
-  type: PropTypes.oneOf(['normal', 'special', 'break']),
+  src: PropTypes.string,
+  iconsSrcArray: PropTypes.arrayOf(PropTypes.string),
+  type: PropTypes.oneOf(['normal', 'special', 'break', 'first', 'last']),
   children: PropTypes.node,
   isDesktopView: PropTypes.bool.isRequired,
 };

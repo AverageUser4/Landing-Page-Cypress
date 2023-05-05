@@ -1,16 +1,14 @@
-.container {
+.items-container {
   position: relative;
 
-  padding: clamp(32px, 5vw, 64px) 0 0;
-
-  /* background-color: red; */
+  padding: clamp(32px, 5vw, 64px) 32px 0;
 }
 
 .avatar {
   position: absolute;
   top: 72px;
-  left: calc(50% - 14px);
-  z-index: 1;
+  left: calc(50% - 13px);
+  z-index: 3;
 
   display: block;
   width: 24px;
@@ -27,4 +25,9 @@
   position: fixed;
 
   top: 350px;
+}
+.avatar--at-end {
+  position: absolute;
+  top: auto;
+  bottom: -10px;
 }
