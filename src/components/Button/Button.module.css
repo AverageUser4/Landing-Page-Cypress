@@ -58,9 +58,11 @@
   color: rgb(255, 255, 255);
 
   font-family: Segoe UI, Roboto, sans-serif;
+
+  border: none;
 }
 .button--type-d:hover:not(:focus-visible) {
-  outline-color: rgb(183, 231, 240);
+  outline-color: transparent;
 }
 
 .button--type-e {

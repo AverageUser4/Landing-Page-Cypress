@@ -9,7 +9,7 @@ import { useViewportContext } from "../../context/Viewport";
 
 import avatarSrc from './assets/avatar.png';
 
-function Progress({ render }) {
+function Progress({ render, endContent }) {
   const { scrollY } = useScrollContext();
   const { viewportWidth } = useViewportContext();
   const [isAvatarReached, setIsAvatarReached] = useState(false);
@@ -63,26 +63,7 @@ function Progress({ render }) {
       </div>
 
       <ProgressEnd
-        content={
-          <>
-            <h2 className="head head--b head--medium">Loved by <span className="grad-text grad-text--b">OSS</span>, trusted by <span className="grad-text grad-text--a">Enterprise</span></h2>
-            <p className="para para--b para--big para--weight-300">Cypress is proud to support developers all around the world by making it easier to build and test modern applications.</p>
-            <div className="cool-siblings">
-              <div>
-                <h3 className="head head--b head--small">5.0M+</h3>
-                <p className="para para--b para--small">Weekly downloads</p>
-              </div>
-              <div>
-                <h3 className="head head--b head--small">43K+</h3>
-                <p className="para para--b para--small">Github stars</p>
-              </div>
-              <div>
-                <h3 className="head head--b head--small">753K+</h3>
-                <p className="para para--b para--small">Dependend repositories</p>
-              </div>
-            </div>
-          </>
-        }
+        content={endContent}
         isEndReached={isEndReached}
         isDesktopView={isDesktopView}
       />
@@ -92,6 +73,7 @@ function Progress({ render }) {
 
 Progress.propTypes = {
   render: PropTypes.func.isRequired,
+  endContent: PropTypes.node.isRequired,
 };
 
 export default Progress;

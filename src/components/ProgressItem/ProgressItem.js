@@ -17,8 +17,6 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
   const containerRef = useRef();
   const { scrollY } = useScrollContext();
 
-  type === 'break' && console.log('hi')
-
   useEffect(() => {
     if(!containerRef.current) {
       return;

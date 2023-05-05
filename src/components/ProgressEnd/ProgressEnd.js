@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './ProgressEnd.module.css';
 
-import { useViewportContext } from '../../context/Viewport';
-
 import src0 from './assets/0.png';
 import src1 from './assets/1.png';
 import src2 from './assets/2.png';
 
 function ProgressEnd({ content, isEndReached, isDesktopView }) {
-  const { viewportWidth } = useViewportContext();
-  
   const pathStyle = {
     strokeDasharray: isEndReached ? '700px' : '0px, 700px',
     transition: `stroke-dasharray ${isEndReached ? '300ms' : '100ms'} ease`,
@@ -21,7 +17,6 @@ function ProgressEnd({ content, isEndReached, isDesktopView }) {
       className={`
         ${css['container']}
         ${isDesktopView && css['container--desktop']}
-        ${viewportWidth % 2 !== 0 && css['container--odd']}
       `}
     >
       {

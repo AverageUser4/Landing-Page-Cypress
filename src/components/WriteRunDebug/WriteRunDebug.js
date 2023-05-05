@@ -3,6 +3,7 @@ import css from './WriteRunDebug.module.css';
 
 import ProgressItem from '../ProgressItem/ProgressItem';
 import Progress from '../Progress/Progress';
+import PagedSlideBestTweets from '../PagedSlideBestTweets/PagedSlideBestTweets';
 
 import { ReactComponent as LaptopSVG } from './assets/laptop.svg';
 import { ReactComponent as ClockSVG } from './assets/clock.svg';
@@ -115,6 +116,30 @@ function WriteRunDebug() {
             />
           </>
         )}
+        endContent={
+          <>
+            <div style={{ maxWidth: 960, margin: '0 auto 64px' }}>
+              <h2 className="head head--b head--medium">Loved by <span className="grad-text grad-text--b">OSS</span>, trusted by <span className="grad-text grad-text--a">Enterprise</span></h2>
+              <p className="para para--b para--big para--weight-300">Cypress is proud to support developers all around the world by making it easier to build and test modern applications.</p>
+              <div className="cool-siblings">
+                <div>
+                  <h3 className="head head--b head--small">5.0M+</h3>
+                  <p className="para para--b para--small">Weekly downloads</p>
+                </div>
+                <div>
+                  <h3 className="head head--b head--small">43K+</h3>
+                  <p className="para para--b para--small">Github stars</p>
+                </div>
+                <div>
+                  <h3 className="head head--b head--small">753K+</h3>
+                  <p className="para para--b para--small">Dependend repositories</p>
+                </div>
+              </div>
+            </div>
+
+            <PagedSlideBestTweets/>
+          </>
+        }
       />
     </div>
   );

@@ -1,0 +1,60 @@
+.container {
+  padding: 24px;
+  height: 236px;
+
+  background-color: rgb(255, 255, 255);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid rgb(225, 227, 237);
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 12px 0px;
+
+  box-sizing: border-box;
+}
+.container--indigo {
+  background-image: url(./assets/indigo.svg);
+}
+.container--orange {
+  background-image: url(./assets/orange.svg);
+}
+.container--teal {
+  background-image: url(./assets/teal.svg);
+}
+.container--big {
+  height: 284px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 16px;
+}
+
+.top__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  display: block;
+  width: 52px;
+  height: 52px;
+
+  padding: 2px;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+}
+
+.container--indigo .twitter-icon {
+  color: rgb(73, 86, 227);
+}
+.container--orange .twitter-icon {
+  color: rgb(150, 63, 0);
+}
+.container--teal .twitter-icon {
+  color: rgb(0, 119, 128);
+}
