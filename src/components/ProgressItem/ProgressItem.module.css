@@ -113,7 +113,7 @@
 
   transition: var(--transition);
 }
-.container--active .circle {
+.circle--active {
   width: 8px;
   height: 8px;
 
@@ -122,7 +122,7 @@
   outline: 2px solid rgb(73, 86, 227);;
   border-radius: 50%;
 }
-.container--active.container--break .circle {
+.container--break .circle--active {
   width: 4px;
   height: 4px;
   
@@ -130,17 +130,19 @@
   border-color: rgb(73, 86, 227);
   outline: none;
 }
-.container--desktop .circle {
+.container--desktop .circle--active {
   transition: 100ms ease-in-out;
 }
 
 .container--desktop.container--break .content-container {
   position: absolute;
   left: 0;
-  z-index: 2;
+  z-index: 4;
 
   width: 100%;
   margin-bottom: -110px;
+
+  background-color: rgb(255, 255, 255);
 }
 
 .content {
@@ -243,15 +245,18 @@
 
 .circle-container {
   position: absolute;
-  top: 130px;
+  top: 125px;
   left: 38px;
   
   padding: 8px 0;
 
   background-color: rgb(255, 255, 255);
 }
-.container--active .circle-container {
+.container--active:not(.container--desktop) .circle-container {
   left: 36px;
+}
+.container--desktop .circle-container .circle--active {
+  transform: translate(-2px, 0);
 }
 .line-container .circle {
   position: static;
@@ -263,6 +268,6 @@
 .container--desktop :global(.super-stroke) {
   transition: 100ms linear;
 }
-.container--active :global(.super-stroke) {
+.container--active:not(.container--desktop) :global(.super-stroke) {
   stroke-dasharray: 1000;
 }

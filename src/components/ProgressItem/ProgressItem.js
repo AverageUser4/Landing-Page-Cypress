@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 
 import { ReactComponent as FullArrowSVG } from '../../assets/icons/full-arrow.svg';
-import { ReactComponent as LinesSVG } from './assets/lines.svg';
 import { useScrollContext } from "../../context/Scroll";
 import { useViewportContext } from "../../context/Viewport";
 
@@ -14,8 +13,13 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
   const [isActive, setIsActive] = useState(false);
   const [isAvatarWithin, setIsAvatarWithin] = useState(false);
   const [solidBarHeight, setSolidBarHeight] = useState(0);
+  const [offsetY, setOffsetY] = useState(0);
   const containerRef = useRef();
   const { scrollY } = useScrollContext();
+
+  if(type === 'special') {
+    console.log(offsetY)
+  }
 
   useEffect(() => {
     if(!containerRef.current) {
@@ -27,9 +31,11 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
     if(containerY <= 350 && containerY > 15) {
       setIsAvatarWithin(true);
       type === 'break' && setIsAvatarWithinBreak(true);
+      setOffsetY(350 - containerY);
     } else {
       setIsAvatarWithin(false);
       type === 'break' && setIsAvatarWithinBreak(false);
+      setOffsetY(0);
     }
 
     if(containerY <= 350) {
@@ -48,6 +54,7 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
         ${type !== 'normal' && css[`container--${type}`]}
         ${isActive && css['container--active']}
         ${isDesktopView && css['container--desktop']}
+        ${isAvatarWithin && css['container--within']}
       `} 
       ref={containerRef}
     >
@@ -72,7 +79,7 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
       <div 
         className={`${css['bar']}`}
       >
-        <div className={css['circle']}/>
+        <div className={`${css['circle']} ${isActive && css['circle--active']}`}/>
         <div 
           className={css['solid-bar']}
           style={
@@ -83,13 +90,12 @@ function ProgressItem({ heading, text, href, src, iconsSrcArray, type = 'normal'
         {
           type === 'special' && 
             <div className={css['line-container']}>
-              <LinesSVG 
-                className={`
-                  ${css['line']}
-                `}
-              />
+              <svg className={css['line']} width="43" height="420" viewBox="0 0 43 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 1.5 0 C 1.5 63 42 57.24 42 128 M 42 130 L 42 293 C 42 363 1.5 358 1.5 420" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeDasharray="4 4"></path>
+                <path d="M 1.5 0 C 1.5 63 42 57.24 42 128" stroke="rgb(73, 86, 227)" strokeWidth="2" strokeLinejoin="round" className="super-stroke" strokeDasharray={`${(!isAvatarWithin && isActive) ? 1000 : offsetY} 1000`}></path>
+              </svg>
               <div className={css['circle-container']}>
-                <div className={css['circle']}/>
+                <div className={`${css['circle']} ${((isActive && !isDesktopView) || offsetY >= 130 || (!isAvatarWithin && isActive)) && css['circle--active']}`}/>
               </div>
             </div>
         }

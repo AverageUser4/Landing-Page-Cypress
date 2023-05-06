@@ -26,6 +26,9 @@
 
 .content {
   padding: 64px 16px;
+  max-width: 100%;
+
+  box-sizing: border-box;
 }
 
 .container--desktop .content {
