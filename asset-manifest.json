@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/landing-page-cypress/static/css/main.43e81dcb.css",
-    "main.js": "/landing-page-cypress/static/js/main.72fec52d.js",
+    "main.js": "/landing-page-cypress/static/js/main.5a2d8ea0.js",
     "static/media/integrate.png": "/landing-page-cypress/static/media/integrate.12e9849592ddab9f69ce.png",
     "static/media/inter-600.woff2": "/landing-page-cypress/static/media/inter-600.b5f0f109bc88052d4000.woff2",
     "static/media/inter-400.woff2": "/landing-page-cypress/static/media/inter-400.c8ba52b05a9ef10f4758.woff2",
@@ -90,10 +90,10 @@
     "static/media/terminal-prompt.svg": "/landing-page-cypress/static/media/terminal-prompt.6ca24a41e72dec73649f7fcca051c6c7.svg",
     "static/media/close.svg": "/landing-page-cypress/static/media/close.dd8fae2aee2be60e71e4ac453e71d77a.svg",
     "main.43e81dcb.css.map": "/landing-page-cypress/static/css/main.43e81dcb.css.map",
-    "main.72fec52d.js.map": "/landing-page-cypress/static/js/main.72fec52d.js.map"
+    "main.5a2d8ea0.js.map": "/landing-page-cypress/static/js/main.5a2d8ea0.js.map"
   },
   "entrypoints": [
     "static/css/main.43e81dcb.css",
-    "static/js/main.72fec52d.js"
+    "static/js/main.5a2d8ea0.js"
   ]
 }
